@@ -7,916 +7,15 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Google Fonts -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        /* CSS Reset & Base Styles */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --primary-green: #2E7D32;
-            --secondary-green: #4CAF50;
-            --light-green: #E8F5E9;
-            --dark-green: #1B5E20;
-            --accent-green: #81C784;
-            --white: #FFFFFF;
-            --light-gray: #F8F9FA;
-            --medium-gray: #E9ECEF;
-            --dark-gray: #495057;
-            --black: #212529;
-            --success: #4CAF50;
-            --warning: #FF9800;
-            --shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
-            --shadow-hover: 0 15px 30px rgba(0, 0, 0, 0.12);
-            --radius-sm: 8px;
-            --radius-md: 12px;
-            --radius-lg: 20px;
-            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-            --container-width: 1200px;
-        }
-
-        body {
-            font-family: 'Poppins', sans-serif;
-            color: var(--black);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        h1, h2, h3, h4 {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 700;
-            line-height: 1.3;
-        }
-
-        .container {
-            width: 100%;
-            max-width: var(--container-width);
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        .section-padding {
-            padding: 80px 0;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-
-        .section-title h2 {
-            font-size: 2.5rem;
-            color: var(--dark-green);
-            margin-bottom: 15px;
-            position: relative;
-            display: inline-block;
-        }
-
-        .section-title h2::after {
-            content: '';
-            position: absolute;
-            width: 80px;
-            height: 4px;
-            background: var(--secondary-green);
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            border-radius: 2px;
-        }
-
-        .section-title p {
-            color: var(--dark-gray);
-            max-width: 700px;
-            margin: 0 auto;
-            font-size: 1.1rem;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 14px 32px;
-            border-radius: var(--radius-sm);
-            font-weight: 600;
-            font-size: 1rem;
-            text-decoration: none;
-            cursor: pointer;
-            transition: var(--transition);
-            text-align: center;
-            border: none;
-            font-family: 'Poppins', sans-serif;
-        }
-
-        .btn-primary {
-            background-color: var(--primary-green);
-            color: var(--white);
-            box-shadow: 0 4px 12px rgba(46, 125, 50, 0.3);
-        }
-
-        .btn-primary:hover {
-            background-color: var(--dark-green);
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(46, 125, 50, 0.4);
-        }
-
-        .btn-secondary {
-            background-color: transparent;
-            color: var(--primary-green);
-            border: 2px solid var(--primary-green);
-        }
-
-        .btn-secondary:hover {
-            background-color: var(--light-green);
-            transform: translateY(-3px);
-        }
-
-        .btn-large {
-            padding: 16px 40px;
-            font-size: 1.1rem;
-        }
-
-        /* Header & Navigation */
-        header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 1000;
-            background-color: rgba(255, 255, 255, 0.95);
-            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
-            transition: var(--transition);
-        }
-
-        header.scrolled {
-            background-color: rgba(255, 255, 255, 0.98);
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-            padding: 5px 0;
-        }
-
-        .header-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 0;
-            transition: var(--transition);
-        }
-
-        header.scrolled .header-container {
-            padding: 10px 0;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            text-decoration: none;
-        }
-
-        .logo-icon {
-            color: var(--primary-green);
-            font-size: 2.2rem;
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
-        }
-
-        .logo-text {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .logo-text h1 {
-            color: var(--primary-green);
-            font-size: 1.8rem;
-            margin: 0;
-            line-height: 1;
-        }
-
-        .logo-text span {
-            color: var(--dark-gray);
-            font-size: 0.8rem;
-            font-weight: 500;
-            letter-spacing: 1px;
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 35px;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: var(--dark-gray);
-            font-weight: 500;
-            font-size: 1rem;
-            transition: var(--transition);
-            position: relative;
-            padding: 5px 0;
-        }
-
-        .nav-links a:hover {
-            color: var(--primary-green);
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            background-color: var(--primary-green);
-            bottom: 0;
-            left: 0;
-            transition: var(--transition);
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-
-        .nav-links a.active {
-            color: var(--primary-green);
-            font-weight: 600;
-        }
-
-        .nav-links a.active::after {
-            width: 100%;
-        }
-
-        .nav-actions {
-            display: flex;
-            gap: 15px;
-            align-items: center;
-        }
-
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            font-size: 1.6rem;
-            color: var(--primary-green);
-            cursor: pointer;
-        }
-
-        /* Hero Section */
-        .hero {
-            padding: 160px 0 100px;
-            background: linear-gradient(135deg, rgba(232, 245, 233, 0.9) 0%, rgba(255, 255, 255, 1) 100%);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(76, 175, 80, 0.1) 0%, rgba(76, 175, 80, 0) 70%);
-            top: -200px;
-            right: -200px;
-            border-radius: 50%;
-            z-index: 0;
-        }
-
-        .hero-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: center;
-            position: relative;
-            z-index: 1;
-        }
-
-        .hero-content h1 {
-            font-size: 3.2rem;
-            color: var(--dark-green);
-            margin-bottom: 20px;
-            line-height: 1.2;
-        }
-
-        .hero-content h1 span {
-            color: var(--primary-green);
-            position: relative;
-        }
-
-        .hero-content h1 span::after {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 6px;
-            background-color: rgba(129, 199, 132, 0.3);
-            bottom: 5px;
-            left: 0;
-            z-index: -1;
-        }
-
-        .hero-content p {
-            font-size: 1.2rem;
-            color: var(--dark-gray);
-            margin-bottom: 35px;
-            max-width: 500px;
-        }
-
-        .hero-actions {
-            display: flex;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
-
-        .hero-image {
-            position: relative;
-        }
-
-        .hero-image img {
-            width: 100%;
-            border-radius: var(--radius-lg);
-            box-shadow: var(--shadow-hover);
-            transform: perspective(1000px) rotateY(-10deg);
-            transition: var(--transition);
-        }
-
-        .hero-image:hover img {
-            transform: perspective(1000px) rotateY(0deg);
-        }
-
-        .hero-stats {
-            position: absolute;
-            bottom: -30px;
-            left: -30px;
-            background: var(--white);
-            padding: 25px;
-            border-radius: var(--radius-md);
-            box-shadow: var(--shadow);
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-            width: 280px;
-        }
-
-        .stat-item h3 {
-            font-size: 2.2rem;
-            color: var(--primary-green);
-            margin-bottom: 5px;
-        }
-
-        .stat-item p {
-            font-size: 0.9rem;
-            color: var(--dark-gray);
-        }
-
-        /* Features Section */
-        .features {
-            background-color: var(--light-gray);
-            position: relative;
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-
-        .feature-card {
-            background-color: var(--white);
-            border-radius: var(--radius-md);
-            padding: 40px 30px;
-            text-align: center;
-            transition: var(--transition);
-            box-shadow: var(--shadow);
-            position: relative;
-            overflow: hidden;
-            z-index: 1;
-        }
-
-        .feature-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 5px;
-            background: linear-gradient(to right, var(--primary-green), var(--accent-green));
-            z-index: 2;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-10px);
-            box-shadow: var(--shadow-hover);
-        }
-
-        .feature-icon {
-            width: 80px;
-            height: 80px;
-            background-color: var(--light-green);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 25px;
-            color: var(--primary-green);
-            font-size: 2.2rem;
-            transition: var(--transition);
-        }
-
-        .feature-card:hover .feature-icon {
-            background-color: var(--primary-green);
-            color: var(--white);
-            transform: scale(1.1);
-        }
-
-        .feature-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-            color: var(--dark-green);
-        }
-
-        .feature-card p {
-            color: var(--dark-gray);
-        }
-
-        /* Impact Section */
-        .impact {
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80');
-            background-size: cover;
-            background-attachment: fixed;
-            background-position: center;
-            color: var(--white);
-            text-align: center;
-        }
-
-        .impact .section-title h2 {
-            color: var(--white);
-        }
-
-        .impact .section-title h2::after {
-            background-color: var(--accent-green);
-        }
-
-        .impact .section-title p {
-            color: rgba(255, 255, 255, 0.9);
-        }
-
-        .impact-stats {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 40px;
-            margin-top: 60px;
-        }
-
-        .impact-stat {
-            padding: 30px 20px;
-        }
-
-        .impact-stat i {
-            font-size: 3rem;
-            color: var(--accent-green);
-            margin-bottom: 20px;
-        }
-
-        .impact-stat h3 {
-            font-size: 3rem;
-            margin-bottom: 10px;
-            color: var(--white);
-        }
-
-        .impact-stat p {
-            font-size: 1.1rem;
-            opacity: 0.9;
-        }
-
-        /* Testimonials */
-        .testimonials {
-            background-color: var(--white);
-        }
-
-        .testimonial-slider {
-            position: relative;
-            max-width: 900px;
-            margin: 0 auto;
-            overflow: hidden;
-        }
-
-        .testimonial-track {
-            display: flex;
-            transition: transform 0.5s ease;
-        }
-
-        .testimonial-slide {
-            min-width: 100%;
-            padding: 0 20px;
-        }
-
-        .testimonial-card {
-            background-color: var(--light-gray);
-            border-radius: var(--radius-md);
-            padding: 40px;
-            text-align: center;
-            box-shadow: var(--shadow);
-            position: relative;
-        }
-
-        .testimonial-card::before {
-            content: "\201C";
-            position: absolute;
-            top: 20px;
-            left: 30px;
-            font-size: 5rem;
-            color: var(--accent-green);
-            font-family: serif;
-            opacity: 0.3;
-        }
-
-        .testimonial-content {
-            font-size: 1.1rem;
-            font-style: italic;
-            margin-bottom: 25px;
-            color: var(--dark-gray);
-            position: relative;
-            z-index: 1;
-        }
-
-        .testimonial-author {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 15px;
-        }
-
-        .author-img {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            background-color: var(--primary-green);
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            font-weight: bold;
-        }
-
-        .author-info h4 {
-            color: var(--dark-green);
-            margin-bottom: 5px;
-            font-size: 1.2rem;
-        }
-
-        .author-info p {
-            color: var(--dark-gray);
-            font-size: 0.9rem;
-        }
-
-        .slider-nav {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-top: 40px;
-        }
-
-        .slider-dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background-color: var(--medium-gray);
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .slider-dot.active {
-            background-color: var(--primary-green);
-            transform: scale(1.2);
-        }
-
-        /* CTA Section */
-        .cta {
-            background: linear-gradient(135deg, var(--primary-green) 0%, var(--dark-green) 100%);
-            color: var(--white);
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .cta::before {
-            content: '';
-            position: absolute;
-            width: 300px;
-            height: 300px;
-            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 70%);
-            top: -100px;
-            right: -100px;
-            border-radius: 50%;
-        }
-
-        .cta::after {
-            content: '';
-            position: absolute;
-            width: 200px;
-            height: 200px;
-            background: radial-gradient(circle, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0) 70%);
-            bottom: -50px;
-            left: -50px;
-            border-radius: 50%;
-        }
-
-        .cta-content {
-            position: relative;
-            z-index: 1;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .cta h2 {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-        }
-
-        .cta p {
-            font-size: 1.2rem;
-            margin-bottom: 40px;
-            opacity: 0.9;
-        }
-
-        .cta .btn {
-            background-color: var(--white);
-            color: var(--primary-green);
-        }
-
-        .cta .btn:hover {
-            background-color: var(--light-green);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-        }
-
-        /* Footer */
-        footer {
-            background-color: black;
-            color: var(--white);
-            padding-top: 70px;
-        }
-
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-            margin-bottom: 50px;
-        }
-
-        .footer-logo {
-            margin-bottom: 20px;
-        }
-
-        .footer-logo .logo-icon {
-            font-size: 2.5rem;
-        }
-
-        .footer-logo .logo-text h1 {
-            color: var(--white);
-        }
-
-        .footer-logo .logo-text span {
-            color: rgba(255, 255, 255, 0.8);
-        }
-
-        .footer-about p {
-            margin-bottom: 25px;
-            opacity: 0.9;
-            line-height: 1.7;
-        }
-
-        .footer-links h3, .footer-contact h3 {
-            font-size: 1.3rem;
-            margin-bottom: 25px;
-            color: var(--white);
-            position: relative;
-            padding-bottom: 10px;
-        }
-
-        .footer-links h3::after, .footer-contact h3::after {
-            content: '';
-            position: absolute;
-            width: 40px;
-            height: 3px;
-            background-color: var(--accent-green);
-            bottom: 0;
-            left: 0;
-        }
-
-        .footer-links ul {
-            list-style: none;
-        }
-
-        .footer-links li {
-            margin-bottom: 12px;
-        }
-
-        .footer-links a {
-            color: rgba(255, 255, 255, 0.8);
-            text-decoration: none;
-            transition: var(--transition);
-        }
-
-        .footer-links a:hover {
-            color: var(--accent-green);
-            padding-left: 5px;
-        }
-
-        .footer-contact p {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            margin-bottom: 20px;
-            opacity: 0.9;
-        }
-
-        .footer-contact i {
-            color: var(--accent-green);
-            width: 20px;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 15px;
-            margin-top: 25px;
-        }
-
-        .social-links a {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background-color: rgba(255, 255, 255, 0.1);
-            color: var(--white);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: var(--transition);
-            text-decoration: none;
-        }
-
-        .social-links a:hover {
-            background-color: var(--accent-green);
-            transform: translateY(-3px);
-        }
-
-        .footer-bottom {
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 25px 0;
-            text-align: center;
-            color: rgba(255, 255, 255, 0.7);
-            font-size: 0.9rem;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 1024px) {
-            .hero-container {
-                gap: 40px;
-            }
-            
-            .hero-content h1 {
-                font-size: 2.8rem;
-            }
-            
-            .hero-stats {
-                left: 0;
-                bottom: -40px;
-            }
-            
-            .section-title h2 {
-                font-size: 2.2rem;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .header-container {
-                padding: 15px 0;
-            }
-            
-            .nav-links, .nav-actions .btn {
-                display: none;
-            }
-            
-            .mobile-menu-btn {
-                display: block;
-            }
-            
-            .hero {
-                padding: 140px 0 80px;
-            }
-            
-            .hero-container {
-                grid-template-columns: 1fr;
-                gap: 50px;
-                text-align: center;
-            }
-            
-            .hero-content h1 {
-                font-size: 2.5rem;
-            }
-            
-            .hero-content p {
-                margin: 0 auto 30px;
-            }
-            
-            .hero-actions {
-                justify-content: center;
-            }
-            
-            .hero-stats {
-                position: relative;
-                left: 0;
-                bottom: 0;
-                margin: 40px auto 0;
-                width: 100%;
-                max-width: 400px;
-            }
-            
-            .section-padding {
-                padding: 60px 0;
-            }
-            
-            .section-title h2 {
-                font-size: 2rem;
-            }
-            
-            .impact-stat h3 {
-                font-size: 2.5rem;
-            }
-            
-            .testimonial-card {
-                padding: 30px 20px;
-            }
-        }
-
-        @media (max-width: 576px) {
-            .hero-content h1 {
-                font-size: 2.2rem;
-            }
-            
-            .hero-content p {
-                font-size: 1.1rem;
-            }
-            
-            .hero-actions {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .hero-actions .btn {
-                width: 100%;
-                max-width: 300px;
-            }
-            
-            .section-title h2 {
-                font-size: 1.8rem;
-            }
-            
-            .feature-card {
-                padding: 30px 20px;
-            }
-            
-            .impact-stat {
-                padding: 20px 10px;
-            }
-            
-            .impact-stat h3 {
-                font-size: 2.2rem;
-            }
-            
-            .cta h2 {
-                font-size: 2rem;
-            }
-            
-            .footer-content {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .hero-content h1 {
-                font-size: 1.9rem;
-            }
-            
-            .hero-stats {
-                grid-template-columns: 1fr;
-                gap: 15px;
-                padding: 20px;
-            }
-            
-            .stat-item h3 {
-                font-size: 1.8rem;
-            }
-            
-            .features-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <!-- Header & Navigation -->
@@ -936,11 +35,11 @@
                 <nav>
                     <ul class="nav-links">
                         <li><a href="#" class="active">Home</a></li>
-                        <li><a href="#">About</a></li>
-                        <li><a href="#">Services</a></li>
-                        <li><a href="#">Projects</a></li>
-                        <li><a href="#">Account</a></li>
-                        <li><a href="#">Contact</a></li>
+                        <li><a href="#mission">Mission</a></li>
+                        <li><a href="#how-it-works">How It Works</a></li>
+                        <li><a href="#projects">Projects</a></li>
+                        <li><a href="#team">Team</a></li>
+                        <li><a href="#contact">Contact</a></li>
                     </ul>
                 </nav>
                 
@@ -956,108 +55,518 @@
     </header>
 
     <!-- Hero Section -->
-    <section class="hero">
-        <div class="container">
-            <div class="hero-container">
-                <!-- Hero Content -->
-                <div class="hero-content">
-                    <h1>Plant Trees, Grow <span>Futures</span></h1>
-                    <p>Join Green Khazana in our mission to create a sustainable future by planting trees and managing environmental resources responsibly across organizations and communities.</p>
-                    
-                    <div class="hero-actions">
-                        <a href="#" class="btn btn-primary btn-large">Start Planting Today</a>
-                        <a href="#" class="btn btn-secondary btn-large">Learn More</a>
-                    </div>
-                </div>
-                
-                <!-- Hero Image -->
-                <div class="hero-image">
-                    <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80" alt="Green Khazana - Tree Planting">
-                    
-                    <!-- Stats Card -->
-                    <div class="hero-stats">
-                        <div class="stat-item">
-                            <h3>500K+</h3>
-                            <p>Trees Planted</p>
-                        </div>
-                        <div class="stat-item">
-                            <h3>120+</h3>
-                            <p>Organizations</p>
-                        </div>
-                    </div>
-                </div>
+
+    <div class="new-hero-main">
+    <!-- Background Video -->
+    <video class="new-hero-bg-video" autoplay muted loop playsinline>
+        <source src="videos/hero-bg.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <!-- Overlay -->
+    <div class="new-hero-overlay"></div>
+
+    <!-- Content -->
+    <div class="new-hero-inner-text-container">
+        <!-- Heading -->
+        <h1>GREEN KHAZANA – Small Savings. Real Assets. A Greener Pakistan.</h1>
+
+        <!-- Subheading -->
+        <h3>Pakistan’s First Digitally Monitored, Commercial & People-Owned Forest Platform</h3>
+
+        <!-- Content Paragraphs -->
+        <p>
+            GREEN KHAZANA is not a plantation drive.
+        </p>
+        <p>
+            It is Pakistan’s green savings system—where every citizen can own trees, build wealth, and protect the future.
+        </p>
+        <p>
+            “Climate action should not be a sacrifice. It should be an opportunity—to earn, to grow, and to leave behind something meaningful.”
+        </p>
+
+        <!-- CTA Button -->
+        <a href="#" class="btn btn-primary">Plant Today. Own Tomorrow. Protect Forever.</a>
+    </div>
+</div>
+
+
+<!-- /* national section after new hero */ -->
+<!-- National Commitment / Key Stats Section -->
+<section class="key-stats-section">
+    <div class="container">
+        <!-- Heading -->
+        <h2 class="section-heading">Our Bold Commitment</h2>
+
+        <!-- Stats Grid -->
+        <div class="stats-grid">
+            <div class="stat-item">
+                <div class="stat-circle"><i class="fas fa-tree"></i></div>
+                <h3 class="stat-number" data-count="100000000">0</h3>
+                <p class="stat-text">Trees by 2030</p>
+            </div>
+            <div class="stat-item">
+                <div class="stat-circle"><i class="fas fa-mountain"></i></div>
+                <h3 class="stat-number" data-count="1">0</h3>
+                <p class="stat-text">Controlled Forests Across Pakistan</p>
+            </div>
+            <div class="stat-item">
+                <div class="stat-circle"><i class="fas fa-satellite-dish"></i></div>
+                <h3 class="stat-number" data-count="100">0</h3>
+                <p class="stat-text">Digital Monitoring & Ownership</p>
+            </div>
+            <div class="stat-item">
+                <div class="stat-circle"><i class="fas fa-coins"></i></div>
+                <h3 class="stat-number" data-count="1">0</h3>
+                <p class="stat-text">Carbon Credit–Backed Green Income</p>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Features Section -->
-    <section class="features section-padding">
-        <div class="container">
-            <div class="section-title">
-                <h2>Why Choose Green Khazana?</h2>
-                <p>We provide comprehensive environmental management solutions for organizations looking to make a real impact.</p>
+<script>
+// Animated Counting Function
+function animateCounters() {
+    const counters = document.querySelectorAll('.stat-number');
+    counters.forEach(counter => {
+        const updateCount = () => {
+            const target = +counter.getAttribute('data-count');
+            const current = +counter.innerText.replace(/,/g,'');
+            const increment = target / 200; // speed of counting
+
+            if(current < target) {
+                counter.innerText = Math.ceil(current + increment).toLocaleString();
+                requestAnimationFrame(updateCount);
+            } else {
+                counter.innerText = target.toLocaleString();
+            }
+        };
+        updateCount();
+    });
+}
+
+const statsSection = document.querySelector('.key-stats-section');
+let counted = false;
+
+window.addEventListener('scroll', () => {
+    const sectionTop = statsSection.getBoundingClientRect().top;
+    const screenHeight = window.innerHeight;
+
+    if(!counted && sectionTop < screenHeight - 100) {
+        animateCounters();
+        counted = true;
+    }
+});
+</script>
+
+
+
+
+    <section class="hero">
+    <div class="container">
+        <div class="hero-container">
+            <!-- Content -->
+            <div class="hero-content">
+                <h2>Why This Matters – The Climate Reality of Pakistan</h2>
+
+                <p>Pakistan emits 1% of global CO₂ but is among top 10 climate-vulnerable countries.</p>
+                <p>Average national temperature +1.2°C</p>
+                <p>Heatwaves 3x longer than 1990s</p>
+                <p>Floods, droughts, air pollution destroying livelihoods</p>
+                <p>Forest cover 5% (global average 31%)</p>
+                <p>Climate change is no longer an environmental issue. It is an economic, social, and survival issue.</p>
+
+                <div class="hero-actions">
+                    <a href="#" class="btn btn-primary">Explore Our Plans</a>
+                    <a href="#" class="btn btn-secondary ">Plant Today</a>
+                </div>
+            </div>
+
+            <!-- Image -->
+            <div class="hero-image">
+                <img src="images/home-after-header-section.png" alt="Green Khazana Sustainability">
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section class="hero">
+    <div class="container">
+        <div class="hero-container" id="reverse-hero">
+
+            
+            <!-- Image -->
+            <div class="hero-image">
+                <img src="images/home-massive-impact-image.png" alt="Green Khazana Sustainability">
+            </div>
+            <!-- Content -->
+            <div class="hero-content">
+                <h2>The Power of a Tree – Small Action, Massive Impact</h2>
+
+                <p>Absorbs 20–25 kg of CO₂ per year</p>
+                <p>Lowers surrounding temperature by 2–4°C</p>
+                <p>Improves air quality and human health</p>
+                <p>Restores soil and groundwater balance</p>
+                <p>Creates long-term economic value</p>
+                <p>Imagine 100 million such trees—professionally planted, digitally monitored, and responsibly harvested. That is GREEN KHAZANA.</p>
+
+                <div class="hero-actions">
+                    <a href="#" class="btn btn-primary">Explore Our Plans</a>
+                    <a href="#" class="btn btn-secondary ">Plant Today</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- Emotion -->
+ <section class="emotion-green-model-section">
+    <div class="emotion-container">
+        <!-- Heading -->
+        <h2 class="emotion-section-heading">FROM EMOTION TO OWNERSHIP – A NEW GREEN MODEL</h2>
+
+        <!-- Intro Paragraph -->
+        <p class="emotion-section-intro">
+            Traditional tree campaigns fail because they rely on emotion alone.
+        </p>
+
+        <!-- Key Points -->
+        <ul class="emotion-key-points">
+            <li><i class="fas fa-check-circle"></i> Ownership</li>
+            <li><i class="fas fa-check-circle"></i> Accountability</li>
+            <li><i class="fas fa-check-circle"></i> Technology</li>
+            <li><i class="fas fa-check-circle"></i> Economic return</li>
+        </ul>
+
+        <!-- Closing Paragraph -->
+        <p class="emotion-section-closing">
+            This is not donation-based plantation.<br>
+            This is real asset creation—where citizens become stakeholders, not spectators.
+        </p>
+    </div>
+</section>
+
+
+    <!-- Why Choose Us Section -->
+    <section class="why-pro">
+  <div class="why-pro-container">
+
+    <div class="why-pro-header">
+      <h2>Why Choose Us</h2>
+      <p>
+        We deliver sustainable, secure, and future-ready solutions
+        that empower businesses to grow with confidence.
+      </p>
+    </div>
+
+    <div class="why-pro-grid">
+
+      <div class="why-pro-card">
+        <span class="icon-ring">
+          <i class="fas fa-seedling"></i>
+        </span>
+        <h3>Sustainability Driven</h3>
+        <p>
+          Our systems are built with long-term environmental and
+          economic sustainability in mind.
+        </p>
+      </div>
+
+      <div class="why-pro-card highlight">
+        <span class="icon-ring">
+          <i class="fas fa-brain"></i>
+        </span>
+        <h3>Smart Decision Making</h3>
+        <p>
+          Advanced analytics and insights help you make
+          informed and profitable decisions.
+        </p>
+      </div>
+
+      <div class="why-pro-card">
+        <span class="icon-ring">
+          <i class="fas fa-handshake"></i>
+        </span>
+        <h3>Trust & Transparency</h3>
+        <p>
+          Clear processes, real-time reporting, and complete
+          visibility at every stage.
+        </p>
+      </div>
+
+      <div class="why-pro-card">
+        <span class="icon-ring">
+          <i class="fas fa-lock"></i>
+        </span>
+        <h3>Enterprise-Grade Security</h3>
+        <p>
+          Your data and investments are protected with
+          industry-standard security practices.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- Digital -->
+<section class="digital-section">
+    <div class="digital-container">
+        <div class="digital-content">
+            <!-- Heading -->
+            <h2 class="digital-heading">Digital Tree Ownership – Transparency You Can Trust</h2>
+
+            <!-- Features -->
+            <ul class="digital-features">
+                <li>Every tree gets a Unique Tree ID, QR Code, and Geo-mapped location.</li>
+                <li>Digitally monitored throughout its life cycle.</li>
+                <li>Linked to carbon absorption data.</li>
+            </ul>
+
+            <!-- Participant Benefits -->
+            <h3 class="digital-subheading">Participant Benefits:</h3>
+            <ul class="digital-benefits">
+                <li><i class="fas fa-check-circle"></i> Digital Ownership Certificate</li>
+                <li><i class="fas fa-check-circle"></i> Growth & Health Updates</li>
+                <li><i class="fas fa-check-circle"></i> Carbon Contribution Record</li>
+                <li><i class="fas fa-check-circle"></i> Harvest & Revenue Eligibility</li>
+            </ul>
+
+            <!-- Tagline -->
+            <p class="digital-tagline">
+                You don’t just plant a tree—you own a growing asset.
+            </p>
+        </div>
+
+        <!-- Image -->
+        <div class="digital-image">
+            <img src="images/digital-agripreneorship-image.png" alt="Digital Tree Ownership">
+        </div>
+    </div>
+</section>
+
+
+<!-- Carbon Section -->
+<section class="carbon-section">
+    <div class="carbon-container">
+        <!-- Heading -->
+        <h2 class="carbon-heading">Carbon Credits – The Green Currency of the Future</h2>
+
+        <div class="carbon-content">
+            <!-- Global Reality Card -->
+            <div class="carbon-card carbon-global">
+                <h3 class="carbon-subheading">Global Reality:</h3>
+                <ul class="carbon-points">
+                    <li>Carbon markets expected to cross USD 100 Billion.</li>
+                    <li>Corporations required to offset emissions.</li>
+                    <li>Nature-based solutions (trees) = most trusted offset.</li>
+                </ul>
+            </div>
+
+            <!-- GREEN KHAZANA Advantage Card -->
+            <div class="carbon-card carbon-advantage">
+                <h3 class="carbon-subheading">GREEN KHAZANA Advantage:</h3>
+                <ul class="carbon-points">
+                    <li> Qualifies for carbon credit verification.</li>
+                    <li> Generates additional income streams.</li>
+                    <li> Positions Pakistan in the global green economy.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Takeaway -->
+    </div>
+</section>
+
+<!-- Forest Section -->
+ <section class="forest-section">
+    <div class="forest-container">
+        <div class="forest-content">
+            <!-- Text Content -->
+            <div class="forest-text">
+                <!-- Heading -->
+                <h2 class="forest-heading"> Controlled Commercial Forests & Intercropping</h2>
+
+                <!-- Key Features -->
+                <ul class="forest-features">
+                    <li>Scientifically planned, environmentally balanced, commercially viable.</li>
+                    <li>High-density commercial forestry.</li>
+                    <li>Intercropping for early income.</li>
+                    <li>Utilization of Type-C & marginal land.</li>
+                    <li>Water-efficient plantation design.</li>
+                    <li>Long-term sustainability management.</li>
+                </ul>
+
+                <!-- Outcome / Benefits -->
+                <h3 class="forest-subheading">Outcome / Benefits:</h3>
+                <ul class="forest-benefits">
+                    <li><i class="fas fa-check-circle"></i> Climate resilience</li>
+                    <li><i class="fas fa-check-circle"></i> Rural employment</li>
+                    <li><i class="fas fa-check-circle"></i> Food & income security</li>
+                    <li><i class="fas fa-check-circle"></i> Sustainable harvesting</li>
+                </ul>
+            </div>
+
+            <!-- Image -->
+            <div class="forest-image">
+                <img src="images/home-forest-image.png" alt="Controlled Commercial Forests & Intercropping">
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- Our Mission Section -->
+    <section class="our-mission-dark">
+  <div class="mission-container">
+
+    <div class="mission-image">
+      <img src="images/our-mission-image.png" alt="Our Mission">
+    </div>
+
+    <div class="mission-text">
+      <h2>Our Mission</h2>
+      <p>
+        Our mission is to create sustainable solutions that empower communities,
+        protect the environment, and foster growth through innovation.
+      </p>
+      <ul>
+        <li><i class="fas fa-check-circle"></i> Sustainable & eco-friendly initiatives</li>
+        <li><i class="fas fa-check-circle"></i> Transparent and trustworthy processes</li>
+        <li><i class="fas fa-check-circle"></i> Empowerment through innovation</li>
+      </ul>
+      <a href="#" class="mission-btn">Join us Now</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- Our Vision -->
+ <section class="our-vision">
+  <div class="vision-container">
+
+    <div class="vision-text">
+      <h2>Our Vision</h2>
+      <p>
+        Our vision is to lead with innovation, sustainability, and
+        excellence, building a future where communities and businesses
+        thrive together.
+      </p>
+      <ul>
+        <li><i class="fas fa-check-circle"></i> Innovation-driven solutions</li>
+        <li><i class="fas fa-check-circle"></i> Long-term sustainability</li>
+        <li><i class="fas fa-check-circle"></i> Empowering communities</li>
+      </ul>
+      <a href="#" class="vision-btn">Start Now</a>
+    </div>
+
+    <div class="vision-image">
+      <img src="images/our-vision-image.png" alt="Our Vision">
+    </div>
+
+  </div>
+</section>
+
+<!-- Our Objectives -->
+  <section class="our-mission-dark">
+  <div class="mission-container">
+
+    <div class="mission-image">
+      <img src="images/home-our-objective.png" alt="Our Mission">
+    </div>
+
+    <div class="mission-text">
+      <h2>Our Objectives</h2>
+      <ul>
+        <li><i class="fas fa-check-circle"></i>Increase national forest cover responsibly</li>
+        <li><i class="fas fa-check-circle"></i> Introduce agripreneurship at mass scale</li>
+        <li><i class="fas fa-check-circle"></i> Digitalize plantation monitoring & ownership</li>
+        <li><i class="fas fa-check-circle"></i> Create climate-linked income opportunities</li>
+        <li><i class="fas fa-check-circle"></i> Promote environmental responsibility through participation</li>
+        <li><i class="fas fa-check-circle"></i> Build verified environmental impact data</li>
+      </ul>
+      <a href="#" class="mission-btn">Start Planting</a>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- Core Principles -->
+ <section class="principles-section">
+    <div class="principles-container">
+        <!-- Heading -->
+        <h2 class="principles-heading">Our Core Principles</h2>
+
+        <!-- Cards Grid -->
+        <div class="principles-cards">
+            <div class="principles-card">
+                <i class="fas fa-balance-scale"></i>
+                <h3>Transparency</h3>
+                <p>Every tree is traceable. Every claim is verifiable.</p>
+            </div>
+            <div class="principles-card">
+                <i class="fas fa-user-check"></i>
+                <h3>Ownership</h3>
+                <p>Participants are asset owners, not donors.</p>
+            </div>
+            <div class="principles-card">
+                <i class="fas fa-leaf"></i>
+                <h3>Sustainability</h3>
+                <p>Environment, economy, and society grow together.</p>
+            </div>
+            <div class="principles-card">
+                <i class="fas fa-briefcase"></i>
+                <h3>Professionalism</h3>
+                <p>Plantation, maintenance, harvesting by experts.</p>
             </div>
             
-            <div class="features-grid">
-                <!-- Feature 1 -->
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-tree"></i>
-                    </div>
-                    <h3>Tree Investment Tracking</h3>
-                    <p>Monitor and track all trees planted by your organization with real-time updates and detailed reporting.</p>
+        </div>
+    </div>
+</section>
+
+
+    <!-- How It Works Section -->
+    <section class="how-it-works section-padding" id="how-it-works">
+        <div class="container">
+            <div class="section-title">
+                <h2>How It Works</h2>
+                <p>Getting started with Green Khazana is simple and straightforward</p>
+            </div>
+            
+            <div class="steps-container">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Register Your Organization</h3>
+                    <p>Sign up and create your organization's profile with our easy onboarding process.</p>
                 </div>
                 
-                <!-- Feature 2 -->
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-users"></i>
-                    </div>
-                    <h3>Member Management</h3>
-                    <p>Easily manage all members, their contributions, and payment status in one intuitive dashboard.</p>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Set Your Goals</h3>
+                    <p>Define your sustainability targets and tree planting objectives.</p>
                 </div>
                 
-                <!-- Feature 3 -->
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-chart-line"></i>
-                    </div>
-                    <h3>Analytics & Reports</h3>
-                    <p>Get detailed insights and reports on your environmental impact and member activities.</p>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Add Members & Track</h3>
+                    <p>Invite team members and start tracking contributions and plantings.</p>
                 </div>
                 
-                <!-- Feature 4 -->
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-leaf"></i>
-                    </div>
-                    <h3>Sustainability Goals</h3>
-                    <p>Set, track, and achieve your organization's sustainability goals with our dedicated tools.</p>
-                </div>
-                
-                <!-- Feature 5 -->
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-qrcode"></i>
-                    </div>
-                    <h3>QR Code Integration</h3>
-                    <p>Generate unique QR codes for each tree or member for easy tracking and verification.</p>
-                </div>
-                
-                <!-- Feature 6 -->
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-mobile-alt"></i>
-                    </div>
-                    <h3>Mobile Responsive</h3>
-                    <p>Access your dashboard and manage your environmental initiatives from any device, anywhere.</p>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h3>Monitor Impact</h3>
+                    <p>Use our analytics dashboard to monitor your environmental impact in real-time.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Impact Section -->
-    <section class="impact section-padding">
+    <section class="impact section-padding" id="impact">
         <div class="container">
             <div class="section-title">
                 <h2>Our Environmental Impact</h2>
@@ -1092,88 +601,169 @@
         </div>
     </section>
 
-    <!-- Testimonials Section -->
-    <section class="testimonials section-padding">
-        <div class="container">
-            <div class="section-title">
-                <h2>What Our Partners Say</h2>
-                <p>Hear from organizations that have transformed their environmental initiatives with Green Khazana</p>
+    <!-- Projects Section -->
+    <section class="projects section-padding" id="projects">
+    <div class="container">
+        <div class="section-title">
+            <h2>Our Articles</h2>
+            <p>Read about our latest environmental projects and initiatives making a real impact.</p>
+        </div>
+        
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-image">
+                    <img src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80" alt="Urban Forest Project">
+                </div>
+                <div class="project-content">
+                    <h3>Urban Forest Initiative</h3>
+                    <p>Transforming city landscapes with sustainable urban forests to improve air quality and community well-being.</p>
+                    <a href="#" class="btn btn-primary">Learn More</a>
+                </div>
             </div>
             
-            <div class="testimonial-slider">
-                <div class="testimonial-track" id="testimonialTrack">
-                    <!-- Testimonial 1 -->
-                    <div class="testimonial-slide">
-                        <div class="testimonial-card">
-                            <div class="testimonial-content">
-                                "Green Khazana has revolutionized how we manage our school's environmental program. The dashboard makes it easy to track our 500+ trees and engage students in sustainability efforts."
-                            </div>
-                            <div class="testimonial-author">
-                                <div class="author-img">MJ</div>
-                                <div class="author-info">
-                                    <h4>Maria Johnson</h4>
-                                    <p>Principal, Green Valley School</p>
-                                </div>
-                            </div>
-                        </div>
+            <div class="project-card">
+                <div class="project-image">
+                    <img src="images/home-our-objective.png" alt="School Green Program">
+                </div>
+                <div class="project-content">
+                    <h3>School Green Program</h3>
+                    <p>Inspiring students to protect the environment through hands-on tree planting and sustainability education.</p>
+                    <a href="#" class="btn btn-primary">Learn More</a>
+                </div>
+            </div>
+            
+            <div class="project-card">
+                <div class="project-image">
+                    <img src="images/our-vision-image.png" alt="Corporate Sustainability">
+                </div>
+                <div class="project-content">
+                    <h3>Corporate Sustainability</h3>
+                    <p>Partnering with companies to implement tree planting initiatives that support ESG goals and community impact.</p>
+                    <a href="#" class="btn btn-primary">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+    <!-- Team Section -->
+    <section class="team section-padding" id="team">
+        <div class="container">
+            <div class="section-title">
+                <h2>Meet Our Leadership Team</h2>
+                <p>The passionate individuals driving Green Khazana's mission forward</p>
+            </div>
+            
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="member-image">
+                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=687&q=80" alt="Alex Morgan">
                     </div>
-                    
-                    <!-- Testimonial 2 -->
-                    <div class="testimonial-slide">
-                        <div class="testimonial-card">
-                            <div class="testimonial-content">
-                                "As a corporation committed to sustainability, Green Khazana provides the transparency and reporting we need. We've planted 2,000 trees through their platform and the impact is measurable."
-                            </div>
-                            <div class="testimonial-author">
-                                <div class="author-img">RS</div>
-                                <div class="author-info">
-                                    <h4>Robert Smith</h4>
-                                    <p>CSR Director, EcoTech Corp</p>
-                                </div>
-                            </div>
-                        </div>
+                    <h3>Alex Morgan</h3>
+                    <p>Founder & CEO</p>
+                    <p>Environmental scientist with 15+ years experience in sustainability projects.</p>
+                </div>
+                
+                <div class="team-member">
+                    <div class="member-image">
+                        <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&auto=format&fit=crop&w=761&q=80" alt="Sarah Chen">
                     </div>
-                    
-                    <!-- Testimonial 3 -->
-                    <div class="testimonial-slide">
-                        <div class="testimonial-card">
-                            <div class="testimonial-content">
-                                "The QR code system for tree tracking is genius! Our community can now scan and learn about each tree we've planted. Engagement has increased by 300% since we started using Green Khazana."
-                            </div>
-                            <div class="testimonial-author">
-                                <div class="author-img">SW</div>
-                                <div class="author-info">
-                                    <h4>Sarah Williams</h4>
-                                    <p>Community Coordinator, Green Earth NGO</p>
-                                </div>
-                            </div>
-                        </div>
+                    <h3>Sarah Chen</h3>
+                    <p>Chief Technology Officer</p>
+                    <p>Tech innovator focused on creating sustainable digital solutions.</p>
+                </div>
+                
+                <div class="team-member">
+                    <div class="member-image">
+                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80" alt="Marcus Rivera">
+                    </div>
+                    <h3>Marcus Rivera</h3>
+                    <p>Head of Partnerships</p>
+                    <p>Building global networks for environmental collaboration.</p>
+                </div>
+                
+                <div class="team-member">
+                    <div class="member-image">
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=688&q=80" alt="Priya Sharma">
+                    </div>
+                    <h3>Priya Sharma</h3>
+                    <p>Community Director</p>
+                    <p>Connecting organizations with local environmental initiatives.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+    <!-- FAQ Section -->
+    <section class="faq section-padding" id="faq">
+        <div class="container">
+            <div class="section-title">
+                <h2>Frequently Asked Questions</h2>
+                <p>Find answers to common questions about Green Khazana</p>
+            </div>
+            
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>How does Green Khazana track planted trees?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We use a combination of GPS tracking, unique QR codes, and regular updates from our field partners. Each tree planted through our platform gets a unique ID that can be tracked throughout its lifecycle.</p>
                     </div>
                 </div>
                 
-                <!-- Slider Navigation Dots -->
-                <div class="slider-nav">
-                    <div class="slider-dot active" data-slide="0"></div>
-                    <div class="slider-dot" data-slide="1"></div>
-                    <div class="slider-dot" data-slide="2"></div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>What types of organizations can use Green Khazana?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Our platform is designed for any organization interested in environmental sustainability - including corporations, schools, universities, NGOs, government agencies, and community groups of all sizes.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>How do you ensure the survival of planted trees?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We work with local experts and communities to ensure proper planting and maintenance. Our partners provide regular updates and replace any trees that don't survive, ensuring your investment has lasting impact.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Can individuals participate or only organizations?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>While our primary focus is organizational management, individuals can participate through their organizations or through our community planting events. We're also developing an individual participation feature for future release.</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Call to Action Section -->
-    <section class="cta section-padding">
+    <section class="cta section-padding" id="cta">
         <div class="container">
             <div class="cta-content">
-                <h2>Ready to Make a Difference?</h2>
-                <p>Join thousands of organizations already using Green Khazana to manage their environmental initiatives and create a sustainable future.</p>
-                <a href="#" class="btn btn-large">Start Your Free Trial</a>
+                <h2>Green Khazana – A Legacy in the Making</h2>
+                <p>Not just about trees—about future generations.</p>
+                <p>Giving children cleaner air.</p>
+                <p>Giving youth dignified green income.</p>
+                <p>Giving Pakistan a sustainable future.</p>
+                <a href="#" class="btn btn-large">Plant Today. Own Tomorrow. Protect Forever</a>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer>
+    <footer id="contact">
         <div class="container">
             <div class="footer-content">
                 <!-- Company Info -->
@@ -1203,11 +793,11 @@
                     <h3>Quick Links</h3>
                     <ul>
                         <li><a href="#">Home</a></li>
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Services</a></li>
-                        <li><a href="#">Projects</a></li>
-                        <li><a href="#">Account</a></li>
-                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#mission">Our Mission</a></li>
+                        <li><a href="#how-it-works">How It Works</a></li>
+                        <li><a href="#projects">Projects</a></li>
+                        <li><a href="#team">Our Team</a></li>
+                        <li><a href="#faq">FAQ</a></li>
                     </ul>
                 </div>
                 
@@ -1218,8 +808,8 @@
                         <li><a href="#">Blog</a></li>
                         <li><a href="#">Case Studies</a></li>
                         <li><a href="#">Documentation</a></li>
-                        <li><a href="#">FAQ</a></li>
-                        <li><a href="#">Support</a></li>
+                        <li><a href="#">Research Papers</a></li>
+                        <li><a href="#">Support Center</a></li>
                         <li><a href="#">Privacy Policy</a></li>
                     </ul>
                 </div>
@@ -1236,7 +826,7 @@
             
             <!-- Copyright -->
             <div class="footer-bottom">
-                <p>&copy; 2023 Green Khazana. All rights reserved. | Designed with <i class="fas fa-heart" style="color: #ff6b6b;"></i> for a greener planet</p>
+                <p>&copy; 2026 Green Khazana. All rights reserved.</p>
             </div>
         </div>
     </footer>
@@ -1305,6 +895,25 @@
                 navLinks.style.boxShadow = '0 10px 30px rgba(0,0,0,0.1)';
                 navLinks.style.gap = '15px';
             }
+        });
+
+        // FAQ Accordion
+        const faqItems = document.querySelectorAll('.faq-item');
+        
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            
+            question.addEventListener('click', () => {
+                // Close all other items
+                faqItems.forEach(otherItem => {
+                    if (otherItem !== item) {
+                        otherItem.classList.remove('active');
+                    }
+                });
+                
+                // Toggle current item
+                item.classList.toggle('active');
+            });
         });
 
         // Smooth scrolling for anchor links
