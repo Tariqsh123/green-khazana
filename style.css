@@ -67,7 +67,7 @@
             display: inline-block;
         }
 
-        .section-title h2::after {
+        /* .section-title h2::after {
             content: '';
             position: absolute;
             width: 80px;
@@ -77,7 +77,7 @@
             left: 50%;
             transform: translateX(-50%);
             border-radius: 2px;
-        }
+        } */
 
         .section-title p {
             color: var(--dark-gray);
@@ -438,7 +438,7 @@
 
         .impact-stat i {
             font-size: 3rem;
-            color: var(--accent-green);
+            color: var(--success);
             margin-bottom: 20px;
         }
 
@@ -473,8 +473,7 @@
         }
 
         .project-card:hover {
-            transform: translateY(-10px);
-            box-shadow: var(--shadow-hover);
+            transform: translateY(-5px);
         }
 
         .project-image {
@@ -507,6 +506,15 @@
             margin-bottom: 20px;
             font-size: small;
         }
+        .project-date{
+    display:block;
+    font-size:12px;
+    font-weight:600;
+    color:#6a8f7b; /* soft green/gray */
+    margin-bottom:6px;
+    letter-spacing:0.3px;
+}
+
 
         
 
@@ -523,7 +531,7 @@
 
         .team-member {
             text-align: center;
-            background-color: var(--light-gray);
+            background-color: #81c7844d;
             border-radius: var(--radius-md);
             padding: 30px;
             transition: var(--transition);
@@ -1500,6 +1508,7 @@
   .vision-text ul li,
   .vision-btn {
     font-size: x-small;
+    text-align: left;
   }
 }
 
@@ -1899,130 +1908,143 @@
 
 
 /* Forest Section */
+/* =========================
+   Forest Clean Section
+========================= */
 
-.forest-section {
-    background-color: var(--white);
-    color: var(--dark-gray);
-    padding: 60px 10px;
-}
-
-.forest-container {
-    max-width: var(--container-width);
-    margin: 0 auto;
+.forest-clean{
+  padding:70px 15px;
+  background:#ffffff;
 }
 
-.forest-content {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 50px;
+.forest-clean-container{
+  max-width:1100px;
+  margin:auto;
 }
 
-.forest-text {
-    flex: 1;
-    min-width: 300px;
+.forest-clean-grid{
+  display:flex;
+  gap:50px;
+  align-items:center;
+  flex-wrap:wrap;
 }
 
-.forest-heading {
-    font-size: 50px;
-    font-weight: 800;
-    color: var(--dark-green);
-    margin-bottom: 40px;
+/* -------- Text -------- */
+
+.forest-clean-text{
+  flex:1;
+  min-width:300px;
 }
 
-.forest-features {
-    list-style: none;
-    padding: 0;
-    margin: 0 auto 40px;
-    font-size: 18px;
-    line-height: 1.6;
-    text-align: left;
-    max-width: 800px;
+.forest-clean-text h2{
+  font-size:44px;
+  font-weight:700;
+  color:#1d3f2a;
+  margin-bottom:25px;
 }
 
-.forest-features li {
-    margin-bottom: 15px;
-    position: relative;
-    padding-left: 20px;
-    font-size: small;
+.forest-clean-text p{
+  font-size:16px;
+  color:#444;
+  line-height:1.7;
+  max-width:520px;
+  margin-bottom:25px;
 }
 
-.forest-features li::before {
-    content: "•";
-    position: absolute;
-    left: 0;
-    color: var(--primary-green);
-    font-weight: bold;
-    font-size: 20px;
+/* -------- List with Green Tick -------- */
+
+.forest-clean-list{
+  list-style:none;
+  padding:0;
+  margin-bottom:25px;
 }
 
-.forest-subheading {
-    font-size: 28px;
-    font-weight: 700;
-    color: var(--primary-green);
-    margin-bottom: 20px;
+.forest-clean-list li{
+  position:relative;
+  padding-left:26px;
+  margin-bottom:12px;
+  font-size:15px;
+  color:#333;
+  line-height:1.6;
 }
 
-.forest-benefits {
-    list-style: none;
-    padding: 0;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    gap: 25px;
+.forest-clean-list li::before{
+  content:"✔";
+  position:absolute;
+  left:0;
+  top:0;
+  color:#1f7a3a;
+  font-weight:700;
 }
 
-.forest-benefits li {
-    font-size: small;
-    color: var(--dark-green);
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    min-width: 200px;
+/* -------- Outcome -------- */
+
+.forest-clean-outcome{
+  font-size:15px;
+  color:#1d3f2a;
 }
 
-.forest-benefits li i {
-    color: var(--secondary-green);
-    font-size: 1.2rem;
+/* -------- Image -------- */
+
+.forest-clean-image{
+  flex:1;
+  min-width:300px;
+  text-align:center;
 }
 
-/* Image Styling */
-.forest-image {
-    flex: 1;
-    min-width: 300px;
-    text-align: center;
+.forest-clean-image img{
+  max-width:100%;
+  height:auto;
+  border-radius:6px;
 }
 
-.forest-image img {
-    max-width: 100%;
-    height: auto;
-    border-radius: var(--radius-md);
-    box-shadow: var(--shadow);
+/* =========================
+   Responsive (Mobile)
+========================= */
+
+@media (max-width:768px){
+
+  .forest-clean-grid{
+    flex-direction:column;
+    text-align:center;
+  }
+
+  .forest-clean-text{
+    text-align:center;
+  }
+
+  .forest-clean-text h2{
+    font-size:32px;
+  }
+
+  .forest-clean-text p{
+    margin-left:auto;
+    margin-right:auto;
+  }
+
+  .forest-clean-list{
+    text-align:center;
+  }
+
+  .forest-clean-list li{
+    padding-left:0;
+  }
+
+  .forest-clean-list li::before{
+    position:relative;
+    margin-right:8px;
+  }
+
+  .forest-clean-outcome{
+    text-align:center;
+  }
+
+  .forest-clean-image{
+    text-align:center;
+  }
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-    .forest-content {
-        flex-direction: column;
-    }
-    .forest-heading {
-        font-size: 35px;
-    }
-    .forest-features {
-        font-size: 14px;
-    }
-    .forest-benefits li {
-        font-size: 13px;
-    }
-}
-@media(max-width:600px){
-    .forest-features li {
-    font-size: x-small;
-}
-.forest-subheading{
-    font-size: 22px;
-}
-}
+
 
 
 /* Core Principles */
