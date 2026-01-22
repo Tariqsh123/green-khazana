@@ -38,14 +38,14 @@
                         <li><a href="about-us.html">About</a></li>
                         <li><a href="how-it-works.html">How It Works</a></li>
                         <li><a href="articles.html">Articles</a></li>
-                        <li><a href="#">Plans</a></li>
-                        <li><a href="#">Contact</a></li>
+                        <li><a href="donation.html">Donation</a></li>
+                        <li><a href="contact-us.html">Contact</a></li>
                     </ul>
                 </nav>
                 
                 <!-- Call to Action & Mobile Menu -->
                 <div class="nav-actions">
-                    <a href="#" class="btn btn-primary">Log in</a>
+                    <a href="account.html" class="btn btn-primary">Log in</a>
                     <button class="mobile-menu-btn" id="mobileMenuBtn">
                         <i class="fas fa-bars"></i>
                     </button>
@@ -55,59 +55,58 @@
     </header>
 
 
+
     <section class="mission-page-hero" id="mission-page-hero">
     <div class="mission-page-hero-content">
         <h1>About Green Khazana</h1>
         <p>
             Green Khazana is Pakistan’s first people-owned, digitally monitored forest platform. We believe that every citizen has the power to create a greener, more sustainable future. By combining technology, community participation, and responsible forestry, we enable individuals to plant, monitor, and benefit from trees in a transparent and impactful way. Our mission goes beyond planting trees — we aim to protect the environment, empower local communities, and build long-term wealth for everyone involved. Together, we are turning green initiatives into measurable environmental, social, and economic outcomes, ensuring that Pakistan’s forests—and its people—thrive for generations to come.
         </p>
-        <a href="#" class="mission-page-hero-btn">
+        <a href="account.html" class="mission-page-hero-btn">
             Join Our Journey
         </a>
     </div>
 </section>
 
-<!-- National Commitment / Key Stats Section -->
-<section class="key-stats-section">
-    <div class="container">
-        <!-- Heading -->
-        <h2 class="section-heading">Our Bold Commitment</h2>
 
-        <!-- Stats Grid -->
-        <div class="stats-grid">
-            <div class="stat-item">
-                <div class="stat-circle"><i class="fas fa-tree"></i></div>
-                <h3 class="stat-number" data-count="100000000">0</h3>
-                <p class="stat-text">Trees by 2030</p>
+<!-- /* national section after new hero */ -->
+<section class="key-stats-section">
+    <div class="key-stats-container">
+        <h2 class="key-stats-heading">Our Commitment to a Greener Pakistan</h2>
+
+        <div class="key-stats-grid">
+            <div class="key-stats-item">
+                <i class="fas fa-tree key-stats-icon"></i>
+                <h3 class="key-stats-number" data-count="100000000">0</h3>
+                <p class="key-stats-text">Trees by 2030</p>
             </div>
-            <div class="stat-item">
-                <div class="stat-circle"><i class="fas fa-mountain"></i></div>
-                <h3 class="stat-number" data-count="1">0</h3>
-                <p class="stat-text">Controlled Forests Across Pakistan</p>
+            <div class="key-stats-item">
+                <i class="fas fa-mountain key-stats-icon"></i>
+                <h3 class="key-stats-number" data-count="1">0</h3>
+                <p class="key-stats-text">Controlled Forests Nationwide</p>
             </div>
-            <div class="stat-item">
-                <div class="stat-circle"><i class="fas fa-satellite-dish"></i></div>
-                <h3 class="stat-number" data-count="100">0</h3>
-                <p class="stat-text">Digital Monitoring & Ownership</p>
+            <div class="key-stats-item">
+                <i class="fas fa-satellite-dish key-stats-icon"></i>
+                <h3 class="key-stats-number" data-count="100">0</h3>
+                <p class="key-stats-text">Digital Tree Monitoring</p>
             </div>
-            <div class="stat-item">
-                <div class="stat-circle"><i class="fas fa-coins"></i></div>
-                <h3 class="stat-number" data-count="1">0</h3>
-                <p class="stat-text">Carbon Credit–Backed Green Income</p>
+            <div class="key-stats-item">
+                <i class="fas fa-coins key-stats-icon"></i>
+                <h3 class="key-stats-number" data-count="1">0</h3>
+                <p class="key-stats-text">Carbon Credit Income</p>
             </div>
         </div>
     </div>
 </section>
 
 <script>
-// Animated Counting Function
-function animateCounters() {
-    const counters = document.querySelectorAll('.stat-number');
+function keyStatsAnimateCounters() {
+    const counters = document.querySelectorAll('.key-stats-number');
     counters.forEach(counter => {
         const updateCount = () => {
             const target = +counter.getAttribute('data-count');
             const current = +counter.innerText.replace(/,/g,'');
-            const increment = target / 200; // speed of counting
+            const increment = target / 200;
 
             if(current < target) {
                 counter.innerText = Math.ceil(current + increment).toLocaleString();
@@ -120,16 +119,16 @@ function animateCounters() {
     });
 }
 
-const statsSection = document.querySelector('.key-stats-section');
-let counted = false;
+const keyStatsSection = document.querySelector('.key-stats-section');
+let keyStatsCounted = false;
 
 window.addEventListener('scroll', () => {
-    const sectionTop = statsSection.getBoundingClientRect().top;
+    const sectionTop = keyStatsSection.getBoundingClientRect().top;
     const screenHeight = window.innerHeight;
 
-    if(!counted && sectionTop < screenHeight - 100) {
-        animateCounters();
-        counted = true;
+    if(!keyStatsCounted && sectionTop < screenHeight - 100) {
+        keyStatsAnimateCounters();
+        keyStatsCounted = true;
     }
 });
 </script>
@@ -150,8 +149,8 @@ window.addEventListener('scroll', () => {
                 <p>Climate change is no longer just an environmental issue—it is a social, economic, and survival challenge for every Pakistani.</p>
 
                 <div class="hero-actions">
-                    <a href="#" class="btn btn-primary">Discover Our Initiatives</a>
-                    <a href="#" class="btn btn-secondary">Start Planting Today</a>
+                    <a href="donation.html" class="btn btn-primary">Donate Now</a>
+                    <a href="contact-us.html" class="btn btn-secondary">Contact Us</a>
                 </div>
             </div>
 
@@ -185,8 +184,8 @@ window.addEventListener('scroll', () => {
                 <p>Now imagine 100 million trees—professionally planted, digitally monitored, and responsibly managed. That is the vision of GREEN KHAZANA.</p>
 
                 <div class="hero-actions">
-                    <a href="#" class="btn btn-primary">Discover Our Initiatives</a>
-                    <a href="#" class="btn btn-secondary">Start Planting Today</a>
+                    <a href="account.html" class="btn btn-primary">Join Us</a>
+                    <a href="how-it-works.html" class="btn btn-secondary">How its Working</a>
                 </div>
             </div>
 
@@ -292,7 +291,7 @@ window.addEventListener('scroll', () => {
                 <p>Giving children cleaner air.</p>
                 <p>Giving youth dignified green income.</p>
                 <p>Giving Pakistan a sustainable future.</p>
-                <a href="#" class="btn btn-large">Plant Today. Own Tomorrow. Protect Forever</a>
+                <a href="account.html" class="btn btn-large">Plant Today. Own Tomorrow. Protect Forever</a>
             </div>
         </div>
     </section>
@@ -332,9 +331,9 @@ window.addEventListener('scroll', () => {
                         <li><a href="about-us.html">About</a></li>
                         <li><a href="how-it-works.html">How It Works</a></li>
                         <li><a href="articles.html">Articles</a></li>
-                        <li><a href="#">Plans</a></li>
-                        <li><a href="#">Contact</a></li>
-                        <li><a href="#">Account</a></li>
+                        <li><a href="donation.html">Donation</a></li>
+                        <li><a href="contact-us.html">Contact</a></li>
+                        <li><a href="account.html">Account</a></li>
                     </ul>
                 </div>
                 
@@ -342,8 +341,8 @@ window.addEventListener('scroll', () => {
                 <div class="footer-links">
                     <h3>Resources</h3>
                     <ul>
-                        <li><a href="#">Terms & Conditions</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="terms.html">Terms & Conditions</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
                     </ul>
                 </div>
                 

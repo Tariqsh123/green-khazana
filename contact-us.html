@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Green Khazana - Sustainable Future</title>
+    <title>Contact Us - Green Khazana</title>
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Google Fonts -->
@@ -55,115 +55,263 @@
     </header>
 
 
-    <!-- Hero Section -->
+   
+    <section class="contact-us-section">
+  <div class="contact-us-container">
+    <!-- Header -->
+    <div class="contact-us-header">
+      <h2>Contact Us</h2>
+      <p class="contact-us-tagline">Have a question or suggestion? Reach out and we’ll respond promptly.</p>
+    </div>
 
-  
+    <div class="contact-us-grid">
+      <!-- Left: Form -->
+      <div class="contact-us-form-card">
+        <form class="contact-us-form" id="contact-us-form">
+          <div class="contact-us-form-group">
+            <input type="text" id="contact-us-name" name="name" placeholder=" " required>
+            <label for="contact-us-name"><i class="fas fa-user"></i> Name</label>
+          </div>
+          <div class="contact-us-form-group">
+            <input type="email" id="contact-us-email" name="email" placeholder=" " required>
+            <label for="contact-us-email"><i class="fas fa-envelope"></i> Email</label>
+          </div>
+          <div class="contact-us-form-group">
+            <input type="text" id="contact-us-subject" name="subject" placeholder=" " required>
+            <label for="contact-us-subject"><i class="fas fa-pen"></i> Subject</label>
+          </div>
+          <div class="contact-us-form-group">
+            <textarea id="contact-us-message" name="message" placeholder=" " rows="5" required></textarea>
+            <label for="contact-us-message"><i class="fas fa-comment-alt"></i> Message</label>
+          </div>
+          <button type="submit" class="contact-us-btn-submit"><i class="fas fa-paper-plane"></i> Send Message</button>
+        </form>
+      </div>
 
+      <!-- Right: Contact Info -->
+      <div class="contact-us-info-card">
+        <h3>Contact Information</h3>
+        <p><i class="fas fa-map-marker-alt"></i> 123 Green Street, Pakistan</p>
+        <p><i class="fas fa-phone-alt"></i> +92 300 1234567</p>
+        <p><i class="fas fa-envelope"></i> info@greenkhazana.org</p>
 
-    <!-- How It Works Section -->
-    <section class="how-it-works section-padding" id="how-it-works" style="padding-top: 150px;">
-        <div class="container">
-            <div class="section-title">
-                <h2>How It Works</h2>
-                <p>Getting started with Green Khazana is simple and straightforward</p>
-            </div>
-            
-            <div class="steps-container">
-                <div class="step">
-                    <div class="step-number">1</div>
-                    <h3>Register Your Organization</h3>
-                    <p>Sign up and create your organization's profile with our easy onboarding process.</p>
-                </div>
-                
-                <div class="step">
-                    <div class="step-number">2</div>
-                    <h3>Set Your Goals</h3>
-                    <p>Define your sustainability targets and tree planting objectives.</p>
-                </div>
-                
-                <div class="step">
-                    <div class="step-number">3</div>
-                    <h3>Add Members & Track</h3>
-                    <p>Invite team members and start tracking contributions and plantings.</p>
-                </div>
-                
-                <div class="step">
-                    <div class="step-number">4</div>
-                    <h3>Monitor Impact</h3>
-                    <p>Use our analytics dashboard to monitor your environmental impact in real-time.</p>
-                </div>
-            </div>
+        <h4>Follow Us</h4>
+        <div class="contact-us-social-icons">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-linkedin-in"></i></a>
         </div>
-    </section>
 
+        
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+:root {
+  --primary-green: #2E7D32;
+  --secondary-green: #4CAF50;
+  --white: #FFFFFF;
+  --light-gray: #F8F9FA;
+  --medium-gray: #E9ECEF;
+  --dark-gray: #495057;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --shadow: 0 10px 30px rgba(0,0,0,0.08);
+  --shadow-hover: 0 15px 50px rgba(0,0,0,0.12);
+  --transition: all 0.3s ease;
+  --container-width: 1200px;
+}
+
+/* Section */
+.contact-us-section {
+  background: var(--light-gray);
+  padding: 120px 20px 80px 20px;
+}
+
+/* Container */
+.contact-us-container {
+  max-width: var(--container-width);
+  margin: 0 auto;
+}
+
+/* Header */
+.contact-us-header h2 {
+  font-size: 50px;
+  font-family: "Oswald", sans-serif;
+  font-weight: 700;
+  color: var(--primary-green);
+  margin-bottom: 15px;
+}
+.contact-us-header p {
+  font-size: small;
+  color: var(--dark-gray);
+}
+
+/* Grid Layout */
+.contact-us-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+  align-items: start;
+  margin-top: 50px;
+}
+
+/* Form Card */
+.contact-us-form-card {
+  background: var(--white);
+  padding: 30px 20px;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+  transition: var(--transition);
+}
+.contact-us-form-card:hover {
+  box-shadow: var(--shadow-hover);
+  transform: translateY(-5px);
+}
+
+/* Form Floating Labels */
+.contact-us-form-group {
+  position: relative;
+  margin-bottom: 25px;
+}
+.contact-us-form-group input,
+.contact-us-form-group textarea {
+  width: 100%;
+  padding: 14px 20px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--medium-gray);
+  background: transparent;
+  font-size: 14px;
+  transition: var(--transition);
+}
+.contact-us-form-group label {
+  position: absolute;
+  top: 14px;
+  left: 20px;
+  font-size: 14px;
+  color: var(--primary-green);
+  font-weight: 600;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: 0.3s;
+}
+.contact-us-form-group input:focus + label,
+.contact-us-form-group input:not(:placeholder-shown) + label,
+.contact-us-form-group textarea:focus + label,
+.contact-us-form-group textarea:not(:placeholder-shown) + label {
+  top: -10px;
+  left: 12px;
+  font-size: 12px;
+  background: var(--white);
+  padding: 0 5px;
+}
+
+/* Input Focus */
+.contact-us-form-group input:focus,
+.contact-us-form-group textarea:focus {
+  outline: none;
+  border-color: var(--secondary-green);
+  box-shadow: 0 0 10px rgba(76,175,80,0.3);
+}
+
+/* Submit Button */
+.contact-us-btn-submit {
+  background: var(--primary-green);
+  color: var(--white);
+  padding: 16px 25px;
+  font-size: 16px;
+  font-weight: 600;
+  border: none;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: var(--transition);
+}
+.contact-us-btn-submit:hover {
+  background: var(--secondary-green);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(46,125,50,0.25);
+}
+
+/* Info Card */
+.contact-us-info-card {
+  background: var(--primary-green);
+  color: var(--white);
+  padding: 30px;
+  height: fit-content;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+}
+.contact-us-info-card h3,
+.contact-us-info-card h4 {
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+.contact-us-info-card p {
+  margin-bottom: 15px;
+  font-size: 14px;
+}
+.contact-us-social-icons {
+  display: flex;
+  gap: 15px;
+  /* margin-bottom: 30px; */
+}
+.contact-us-social-icons a {
+  color: var(--white);
+  font-size: 16px;
+  transition: 0.3s;
+}
+.contact-us-social-icons a:hover {
+  color: var(--secondary-green);
+}
+.contact-us-map-placeholder {
+  background: rgba(255,255,255,0.2);
+  text-align: center;
+  padding: 20px;
+  border-radius: var(--radius-md);
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+      .contact-us-grid {
+        grid-template-columns: 1fr;
+        gap: 0;
+      }
+  .contact-us-form-card,
+  .contact-us-info-card {
+    margin-bottom: 30px;
+  }
+  .contact-us-btn-submit {
+    width: 100%;
+    justify-content: center;
+  }
+}
+@media (max-width: 576px){
+  .contact-us-header h2 { font-size: 35px; text-align: center;}
+  .contact-us-header p { font-size: x-small; text-align: center;}
+  .contact-us-section {
+    padding: 120px 20px 40px 20px;
+}
+}
+</style>
+
+<script>
+document.getElementById('contact-us-form').addEventListener('submit', function(e){
+  e.preventDefault();
+  alert("Thank you! Your message has been sent successfully.");
+  this.reset();
+});
+</script>
 
 
     
-    <!-- FAQ Section -->
-    <section class="faq section-padding" id="faq">
-        <div class="container">
-            <div class="section-title">
-                <h2>Frequently Asked Questions</h2>
-                <p>Find answers to common questions about Green Khazana</p>
-            </div>
-            
-            <div class="faq-container">
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <span>How does Green Khazana track planted trees?</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>We use a combination of GPS tracking, unique QR codes, and regular updates from our field partners. Each tree planted through our platform gets a unique ID that can be tracked throughout its lifecycle.</p>
-                    </div>
-                </div>
-                
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <span>What types of organizations can use Green Khazana?</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Our platform is designed for any organization interested in environmental sustainability - including corporations, schools, universities, NGOs, government agencies, and community groups of all sizes.</p>
-                    </div>
-                </div>
-                
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <span>How do you ensure the survival of planted trees?</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>We work with local experts and communities to ensure proper planting and maintenance. Our partners provide regular updates and replace any trees that don't survive, ensuring your investment has lasting impact.</p>
-                    </div>
-                </div>
-                
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <span>Can individuals participate or only organizations?</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>While our primary focus is organizational management, individuals can participate through their organizations or through our community planting events. We're also developing an individual participation feature for future release.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Call to Action Section -->
-    <section class="cta section-padding" id="cta">
-        <div class="container">
-            <div class="cta-content">
-                <h2>Green Khazana – A Legacy in the Making</h2>
-                <p>Not just about trees—about future generations.</p>
-                <p>Giving children cleaner air.</p>
-                <p>Giving youth dignified green income.</p>
-                <p>Giving Pakistan a sustainable future.</p>
-                <a href="#" class="btn btn-large">Plant Today. Own Tomorrow. Protect Forever</a>
-            </div>
-        </div>
-    </section>
 
     <!-- Footer -->
     <footer id="contact">

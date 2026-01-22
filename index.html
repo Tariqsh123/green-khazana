@@ -38,14 +38,14 @@
                         <li><a href="about-us.html">About</a></li>
                         <li><a href="how-it-works.html">How It Works</a></li>
                         <li><a href="articles.html">Articles</a></li>
-                        <li><a href="#">Plans</a></li>
-                        <li><a href="#">Contact</a></li>
+                        <li><a href="donation.html">Donation</a></li>
+                        <li><a href="contact-us.html">Contact</a></li>
                     </ul>
                 </nav>
                 
                 <!-- Call to Action & Mobile Menu -->
                 <div class="nav-actions">
-                    <a href="#" class="btn btn-primary">Log in</a>
+                    <a href="account.html" class="btn btn-primary">Log in</a>
                     <button class="mobile-menu-btn" id="mobileMenuBtn">
                         <i class="fas fa-bars"></i>
                     </button>
@@ -86,53 +86,49 @@
         </p>
 
         <!-- CTA Button -->
-        <a href="#" class="btn btn-primary">Plant Today. Own Tomorrow. Protect Forever.</a>
+        <a href="account.html" class="btn btn-primary">Plant Today. Own Tomorrow. Protect Forever.</a>
     </div>
 </div>
 
 
 <!-- /* national section after new hero */ -->
-<!-- National Commitment / Key Stats Section -->
 <section class="key-stats-section">
-    <div class="container">
-        <!-- Heading -->
-        <h2 class="section-heading">Our Bold Commitment</h2>
+    <div class="key-stats-container">
+        <h2 class="key-stats-heading">Our Commitment to a Greener Pakistan</h2>
 
-        <!-- Stats Grid -->
-        <div class="stats-grid">
-            <div class="stat-item">
-                <div class="stat-circle"><i class="fas fa-tree"></i></div>
-                <h3 class="stat-number" data-count="100000000">0</h3>
-                <p class="stat-text">Trees by 2030</p>
+        <div class="key-stats-grid">
+            <div class="key-stats-item">
+                <i class="fas fa-tree key-stats-icon"></i>
+                <h3 class="key-stats-number" data-count="100000000">0</h3>
+                <p class="key-stats-text">Trees by 2030</p>
             </div>
-            <div class="stat-item">
-                <div class="stat-circle"><i class="fas fa-mountain"></i></div>
-                <h3 class="stat-number" data-count="1">0</h3>
-                <p class="stat-text">Controlled Forests Across Pakistan</p>
+            <div class="key-stats-item">
+                <i class="fas fa-mountain key-stats-icon"></i>
+                <h3 class="key-stats-number" data-count="1">0</h3>
+                <p class="key-stats-text">Controlled Forests Nationwide</p>
             </div>
-            <div class="stat-item">
-                <div class="stat-circle"><i class="fas fa-satellite-dish"></i></div>
-                <h3 class="stat-number" data-count="100">0</h3>
-                <p class="stat-text">Digital Monitoring & Ownership</p>
+            <div class="key-stats-item">
+                <i class="fas fa-satellite-dish key-stats-icon"></i>
+                <h3 class="key-stats-number" data-count="100">0</h3>
+                <p class="key-stats-text">Digital Tree Monitoring</p>
             </div>
-            <div class="stat-item">
-                <div class="stat-circle"><i class="fas fa-coins"></i></div>
-                <h3 class="stat-number" data-count="1">0</h3>
-                <p class="stat-text">Carbon Credit–Backed Green Income</p>
+            <div class="key-stats-item">
+                <i class="fas fa-coins key-stats-icon"></i>
+                <h3 class="key-stats-number" data-count="1">0</h3>
+                <p class="key-stats-text">Carbon Credit Income</p>
             </div>
         </div>
     </div>
 </section>
 
 <script>
-// Animated Counting Function
-function animateCounters() {
-    const counters = document.querySelectorAll('.stat-number');
+function keyStatsAnimateCounters() {
+    const counters = document.querySelectorAll('.key-stats-number');
     counters.forEach(counter => {
         const updateCount = () => {
             const target = +counter.getAttribute('data-count');
             const current = +counter.innerText.replace(/,/g,'');
-            const increment = target / 200; // speed of counting
+            const increment = target / 200;
 
             if(current < target) {
                 counter.innerText = Math.ceil(current + increment).toLocaleString();
@@ -145,16 +141,16 @@ function animateCounters() {
     });
 }
 
-const statsSection = document.querySelector('.key-stats-section');
-let counted = false;
+const keyStatsSection = document.querySelector('.key-stats-section');
+let keyStatsCounted = false;
 
 window.addEventListener('scroll', () => {
-    const sectionTop = statsSection.getBoundingClientRect().top;
+    const sectionTop = keyStatsSection.getBoundingClientRect().top;
     const screenHeight = window.innerHeight;
 
-    if(!counted && sectionTop < screenHeight - 100) {
-        animateCounters();
-        counted = true;
+    if(!keyStatsCounted && sectionTop < screenHeight - 100) {
+        keyStatsAnimateCounters();
+        keyStatsCounted = true;
     }
 });
 </script>
@@ -177,8 +173,8 @@ window.addEventListener('scroll', () => {
                 <p>Climate change is no longer an environmental issue. It is an economic, social, and survival issue.</p>
 
                 <div class="hero-actions">
-                    <a href="#" class="btn btn-primary">Explore Our Plans</a>
-                    <a href="#" class="btn btn-secondary ">Plant Today</a>
+                    <a href="donation.html" class="btn btn-primary">Donate Now</a>
+                    <a href="contact-us.html" class="btn btn-secondary ">Contact Us</a>
                 </div>
             </div>
 
@@ -212,8 +208,8 @@ window.addEventListener('scroll', () => {
                 <p>Imagine 100 million such trees—professionally planted, digitally monitored, and responsibly harvested. That is GREEN KHAZANA.</p>
 
                 <div class="hero-actions">
-                    <a href="#" class="btn btn-primary">Explore Our Plans</a>
-                    <a href="#" class="btn btn-secondary ">Plant Today</a>
+                    <a href="account.html" class="btn btn-primary">Join us</a>
+                    <a href="account.html" class="btn btn-secondary ">Plant Today</a>
                 </div>
             </div>
 
@@ -350,6 +346,29 @@ window.addEventListener('scroll', () => {
 </section>
 
 
+<section class="donate-section">
+    <div class="donate-container">
+        <h2 class="donate-heading">Invest in a Greener Future</h2>
+        <p class="donate-subheading">
+            Donate, Own a Tree, Support the Environment, and Create Green Wealth for the Next Generation
+        </p>
+
+        <p class="donate-text">
+            GREEN KHAZANA ek visionary green initiative hai jo environmental sustainability, social responsibility, education aur smart green investment ko combine karta hai. 
+            Is program ke zariye donors aur families tree ownership ke through environmental impact aur long-term green assets create kar sakte hain.
+        </p>
+
+        <p class="donate-text">
+            Climate change se ladne, carbon credit culture promote karne, aur sustainable income generate karne ke liye aap apna contribution de sakte hain. 
+            Har donation digitally track kiya jata hai aur QR-coded tree ownership ke zariye aap apne darakhton ko monitor kar sakte hain.
+        </p>
+
+        <a href="donation.html" style="text-decoration: none;" class="donate-overview-btn" id="donateOverviewBtn">View All Donation Plans</a>
+    </div>
+</section>
+
+
+
 <!-- Carbon Section -->
 <section class="carbon-section">
     <div class="carbon-container">
@@ -443,7 +462,7 @@ window.addEventListener('scroll', () => {
         <li><i class="fas fa-check-circle"></i> Transparent and trustworthy processes</li>
         <li><i class="fas fa-check-circle"></i> Empowerment through innovation</li>
       </ul>
-      <a href="#" class="mission-btn">Join us Now</a>
+      <a href="account.html" class="mission-btn">Join us Now</a>
     </div>
 
   </div>
@@ -465,7 +484,7 @@ window.addEventListener('scroll', () => {
         <li><i class="fas fa-check-circle"></i> Long-term sustainability</li>
         <li><i class="fas fa-check-circle"></i> Empowering communities</li>
       </ul>
-      <a href="#" class="vision-btn">Start Now</a>
+      <a href="account.html" class="vision-btn">Start Now</a>
     </div>
 
     <div class="vision-image">
@@ -493,7 +512,7 @@ window.addEventListener('scroll', () => {
         <li><i class="fas fa-check-circle"></i> Promote environmental responsibility through participation</li>
         <li><i class="fas fa-check-circle"></i> Build verified environmental impact data</li>
       </ul>
-      <a href="#" class="mission-btn">Start Planting</a>
+      <a href="account.html" class="mission-btn">Start Planting</a>
     </div>
 
   </div>
@@ -746,7 +765,7 @@ window.addEventListener('scroll', () => {
                 <p>Giving children cleaner air.</p>
                 <p>Giving youth dignified green income.</p>
                 <p>Giving Pakistan a sustainable future.</p>
-                <a href="#" class="btn btn-large">Plant Today. Own Tomorrow. Protect Forever</a>
+                <a href="account.html" class="btn btn-large">Plant Today. Own Tomorrow. Protect Forever</a>
             </div>
         </div>
     </section>
@@ -785,9 +804,9 @@ window.addEventListener('scroll', () => {
                         <li><a href="about-us.html">About</a></li>
                         <li><a href="how-it-works.html">How It Works</a></li>
                         <li><a href="articles.html">Articles</a></li>
-                        <li><a href="#">Plans</a></li>
-                        <li><a href="#">Contact</a></li>
-                        <li><a href="#">Account</a></li>
+                        <li><a href="donation.html">Donation</a></li>
+                        <li><a href="contact-us.html">Contact</a></li>
+                        <li><a href="account.html">Account</a></li>
                     </ul>
                 </div>
                 
@@ -795,8 +814,8 @@ window.addEventListener('scroll', () => {
                 <div class="footer-links">
                     <h3>Resources</h3>
                     <ul>
-                        <li><a href="#">Terms & Conditions</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="terms.html">Terms & Conditions</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
                     </ul>
                 </div>
                 

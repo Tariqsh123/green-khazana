@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Green Khazana - Sustainable Future</title>
+    <title>Account - Green Khazana</title>
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Google Fonts -->
@@ -55,115 +55,228 @@
     </header>
 
 
-    <!-- Hero Section -->
+   
+    <section class="account-page-section">
+  <div class="account-page-container">
+    <div class="account-page-card">
+      <!-- Toggle Buttons -->
+      <div class="account-page-toggle">
+        <button class="account-page-toggle-btn account-page-toggle-login active" onclick="switchAccountPage('login')">Login</button>
+        <button class="account-page-toggle-btn account-page-toggle-signup" onclick="switchAccountPage('signup')">Sign Up</button>
+      </div>
 
-  
-
-
-    <!-- How It Works Section -->
-    <section class="how-it-works section-padding" id="how-it-works" style="padding-top: 150px;">
-        <div class="container">
-            <div class="section-title">
-                <h2>How It Works</h2>
-                <p>Getting started with Green Khazana is simple and straightforward</p>
-            </div>
-            
-            <div class="steps-container">
-                <div class="step">
-                    <div class="step-number">1</div>
-                    <h3>Register Your Organization</h3>
-                    <p>Sign up and create your organization's profile with our easy onboarding process.</p>
-                </div>
-                
-                <div class="step">
-                    <div class="step-number">2</div>
-                    <h3>Set Your Goals</h3>
-                    <p>Define your sustainability targets and tree planting objectives.</p>
-                </div>
-                
-                <div class="step">
-                    <div class="step-number">3</div>
-                    <h3>Add Members & Track</h3>
-                    <p>Invite team members and start tracking contributions and plantings.</p>
-                </div>
-                
-                <div class="step">
-                    <div class="step-number">4</div>
-                    <h3>Monitor Impact</h3>
-                    <p>Use our analytics dashboard to monitor your environmental impact in real-time.</p>
-                </div>
-            </div>
+      <!-- Login Form -->
+      <form id="account-page-login-form" class="account-page-form active">
+        <div class="account-page-form-group">
+          <input type="email" id="account-page-login-email" placeholder=" " required>
+          <label for="account-page-login-email"><i class="fas fa-envelope"></i> Email</label>
         </div>
-    </section>
+        <div class="account-page-form-group">
+          <input type="password" id="account-page-login-password" placeholder=" " required>
+          <label for="account-page-login-password"><i class="fas fa-lock"></i> Password</label>
+        </div>
+        <button type="submit" class="account-page-btn-submit">Login</button>
+        <p class="account-page-form-text">Don't have an account? <span onclick="switchAccountPage('signup')">Sign Up</span></p>
+      </form>
+
+      <!-- Sign Up Form -->
+      <form id="account-page-signup-form" class="account-page-form">
+        <div class="account-page-form-group">
+          <input type="text" id="account-page-signup-name" placeholder=" " required>
+          <label for="account-page-signup-name"><i class="fas fa-user"></i> Full Name</label>
+        </div>
+        <div class="account-page-form-group">
+          <input type="email" id="account-page-signup-email" placeholder=" " required>
+          <label for="account-page-signup-email"><i class="fas fa-envelope"></i> Email</label>
+        </div>
+        <div class="account-page-form-group">
+          <input type="password" id="account-page-signup-password" placeholder=" " required>
+          <label for="account-page-signup-password"><i class="fas fa-lock"></i> Password</label>
+        </div>
+        <div class="account-page-form-group">
+          <input type="password" id="account-page-signup-confirm-password" placeholder=" " required>
+          <label for="account-page-signup-confirm-password"><i class="fas fa-lock"></i> Confirm Password</label>
+        </div>
+        <button type="submit" class="account-page-btn-submit">Sign Up</button>
+        <p class="account-page-form-text">Already have an account? <span onclick="switchAccountPage('login')">Login</span></p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<style>
+:root {
+  --primary-green: #2E7D32;
+  --secondary-green: #4CAF50;
+  --white: #FFFFFF;
+  --light-gray: #F8F9FA;
+  --medium-gray: #E9ECEF;
+  --dark-gray: #495057;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --shadow: 0 10px 30px rgba(0,0,0,0.08);
+  --shadow-hover: 0 15px 50px rgba(0,0,0,0.12);
+  --transition: all 0.3s ease;
+}
+
+/* Section */
+.account-page-section {
+  background: var(--light-gray);
+  padding: 150px 20px 80px 20px;
+}
+
+/* Container */
+.account-page-container {
+  max-width: 450px;
+  margin: 0 auto;
+}
+
+/* Card */
+.account-page-card {
+  background: var(--white);
+  padding: 40px 30px;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+  transition: var(--transition);
+}
+
+/* Toggle Buttons */
+.account-page-toggle {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+.account-page-toggle-btn {
+  flex: 1;
+  padding: 12px 0;
+  font-weight: 600;
+  font-size: 16px;
+  background: var(--light-gray);
+  border: none;
+  cursor: pointer;
+  transition: var(--transition);
+}
+.account-page-toggle-btn.active {
+  background: var(--primary-green);
+  color: var(--white);
+  border-radius: var(--radius-md);
+}
+
+/* Forms */
+.account-page-form {
+  display: none;
+  flex-direction: column;
+}
+.account-page-form.active {
+  display: flex;
+}
+.account-page-form-group {
+  position: relative;
+  margin-bottom: 20px;
+}
+.account-page-form-group input {
+  width: 100%;
+  padding: 14px 20px;
+  font-size: 14px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--medium-gray);
+  background: transparent;
+  transition: var(--transition);
+}
+.account-page-form-group label {
+  position: absolute;
+  left: 20px;
+  top: 14px;
+  font-size: 14px;
+  color: var(--primary-green);
+  font-weight: 600;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: 0.3s;
+}
+.account-page-form-group input:focus + label,
+.account-page-form-group input:not(:placeholder-shown) + label {
+  top: -10px;
+  left: 12px;
+  font-size: 12px;
+  background: var(--white);
+  padding: 0 5px;
+}
+
+/* Button */
+.account-page-btn-submit {
+  background: var(--primary-green);
+  color: var(--white);
+  padding: 14px 0;
+  font-size: 16px;
+  font-weight: 600;
+  border: none;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  margin-top: 10px;
+  transition: var(--transition);
+}
+.account-page-btn-submit:hover {
+  background: var(--secondary-green);
+  transform: translateY(-2px);
+}
+
+/* Text */
+.account-page-form-text {
+  font-size: 14px;
+  margin-top: 15px;
+  text-align: center;
+}
+.account-page-form-text span {
+  color: var(--primary-green);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* Responsive */
+@media (max-width: 576px){
+  .account-page-container {
+    max-width: 100%;
+  }
+}
+</style>
+
+<script>
+function switchAccountPage(tab) {
+  const loginForm = document.getElementById('account-page-login-form');
+  const signupForm = document.getElementById('account-page-signup-form');
+  const loginBtn = document.querySelector('.account-page-toggle-login');
+  const signupBtn = document.querySelector('.account-page-toggle-signup');
+
+  if(tab === 'login'){
+    loginForm.classList.add('active');
+    signupForm.classList.remove('active');
+    loginBtn.classList.add('active');
+    signupBtn.classList.remove('active');
+  } else {
+    signupForm.classList.add('active');
+    loginForm.classList.remove('active');
+    signupBtn.classList.add('active');
+    loginBtn.classList.remove('active');
+  }
+}
+
+// Form demo submit
+document.getElementById('account-page-login-form').addEventListener('submit', function(e){
+  e.preventDefault();
+  alert('Login successful (demo)');
+});
+document.getElementById('account-page-signup-form').addEventListener('submit', function(e){
+  e.preventDefault();
+  alert('Sign Up successful (demo)');
+});
+</script>
 
 
 
     
-    <!-- FAQ Section -->
-    <section class="faq section-padding" id="faq">
-        <div class="container">
-            <div class="section-title">
-                <h2>Frequently Asked Questions</h2>
-                <p>Find answers to common questions about Green Khazana</p>
-            </div>
-            
-            <div class="faq-container">
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <span>How does Green Khazana track planted trees?</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>We use a combination of GPS tracking, unique QR codes, and regular updates from our field partners. Each tree planted through our platform gets a unique ID that can be tracked throughout its lifecycle.</p>
-                    </div>
-                </div>
-                
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <span>What types of organizations can use Green Khazana?</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Our platform is designed for any organization interested in environmental sustainability - including corporations, schools, universities, NGOs, government agencies, and community groups of all sizes.</p>
-                    </div>
-                </div>
-                
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <span>How do you ensure the survival of planted trees?</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>We work with local experts and communities to ensure proper planting and maintenance. Our partners provide regular updates and replace any trees that don't survive, ensuring your investment has lasting impact.</p>
-                    </div>
-                </div>
-                
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <span>Can individuals participate or only organizations?</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>While our primary focus is organizational management, individuals can participate through their organizations or through our community planting events. We're also developing an individual participation feature for future release.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Call to Action Section -->
-    <section class="cta section-padding" id="cta">
-        <div class="container">
-            <div class="cta-content">
-                <h2>Green Khazana – A Legacy in the Making</h2>
-                <p>Not just about trees—about future generations.</p>
-                <p>Giving children cleaner air.</p>
-                <p>Giving youth dignified green income.</p>
-                <p>Giving Pakistan a sustainable future.</p>
-                <a href="#" class="btn btn-large">Plant Today. Own Tomorrow. Protect Forever</a>
-            </div>
-        </div>
-    </section>
 
     <!-- Footer -->
     <footer id="contact">
