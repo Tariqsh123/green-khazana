@@ -60,6 +60,7 @@
         }
 
         .section-title h2 {
+            font-family: "Oswald", sans-serif;
             font-size: 50px;
             color: var(--dark-green);
             margin-bottom: 15px;
@@ -186,6 +187,7 @@
         .logo-text h1 {
             color: var(--primary-green);
             font-size: 1.8rem;
+            font-family: "Oswald", sans-serif;
             margin: 0;
             line-height: 1;
         }
@@ -289,6 +291,7 @@
             font-size: 50px;
             color: var(--dark-green);
             margin-bottom: 20px;
+            font-family: "Oswald", sans-serif;
             line-height: 1.2;
         }
 
@@ -309,11 +312,12 @@
             margin-bottom: 10px;
             max-width: 500px;
             width: 100%;
-            margin: 5px auto;
+            /* margin: 5px auto; */
         }
 
         .hero-actions {
             display: flex;
+            margin-top: 20px;
             gap: 20px;
             flex-wrap: wrap;
         }
@@ -457,14 +461,31 @@
         .projects {
             background-color: var(--white);
         }
+        .projects .container{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+        }
+        .projects .section-title{
+            margin: 0;
+        }
 
         .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
             gap: 30px;
+            width: 100%;
+            align-items: center;
+            justify-content: center;
         }
 
         .project-card {
+            height: 500px;
+            width: 340px;
             border-radius: var(--radius-md);
             overflow: hidden;
             box-shadow: 1px 1px 5px gray;
@@ -664,7 +685,7 @@
         }
 
         .cta h2 {
-            font-size: 2.5rem;
+font-family: "Oswald", sans-serif;            font-size: 2.5rem;
             margin-bottom: 20px;
         }
 
@@ -725,9 +746,11 @@
         .footer-links h3, .footer-contact h3 {
             font-size: 1.3rem;
             margin-bottom: 25px;
+            font-family: "Oswald", sans-serif;
             color: var(--white);
             position: relative;
             padding-bottom: 10px;
+            
         }
 
         .footer-links h3::after, .footer-contact h3::after {
@@ -1103,6 +1126,7 @@
 
 .why-pro-header h2 {
   font-size: 50px;
+  font-family: "Oswald", sans-serif;
   color: var(--dark-green);
   position: relative;
   display: inline-block;
@@ -1278,6 +1302,7 @@
 .mission-text h2 {
   font-size: 50px;
   color: var(--white);
+  font-family: "Oswald", sans-serif;
   margin-bottom: 20px;
   position: relative;
 }
@@ -1395,6 +1420,7 @@
 
 .vision-text h2 {
   font-size: 50px;
+  font-family: "Oswald", sans-serif;
   color: var(--primary-green);
   margin-bottom: 20px;
   position: relative;
@@ -1523,6 +1549,7 @@
 .key-stats-section .section-heading {
     color: var(--dark-green);
     font-size: 50px;
+    font-family: "Oswald", sans-serif;
     font-weight: 800;
     margin-bottom: 70px;
 }
@@ -1615,6 +1642,7 @@
     font-size: 50px; 
     font-weight: 800;
     margin-bottom: 30px;
+    font-family: "Oswald", sans-serif;
     line-height: 1.2;
 }
 
@@ -1695,6 +1723,7 @@
     font-size: 50px;
     font-weight: 800;
     color: var(--dark-green);
+    font-family: "Oswald", sans-serif;
     margin-bottom: 30px;
 }
 
@@ -1709,6 +1738,7 @@
 
 .digital-subheading {
     font-size: 28px;
+    font-family: "Oswald", sans-serif;
     font-weight: 700;
     color: var(--primary-green);
     margin-bottom: 20px;
@@ -1808,6 +1838,7 @@
 
 .carbon-heading {
     font-size: 50px;
+    font-family: "Oswald", sans-serif;
     font-weight: 800;
     margin-bottom: 50px;
     line-height: 1.2;
@@ -1846,6 +1877,7 @@
     font-size: 28px;
     font-weight: 700;
     text-align: center;
+    font-family: "Oswald", sans-serif;
     margin-bottom: 20px;
 }
 
@@ -1938,6 +1970,7 @@
 
 .forest-clean-text h2{
   font-size:44px;
+  font-family: "Oswald", sans-serif;
   font-weight:700;
   color:#1d3f2a;
   margin-bottom:25px;
@@ -2061,6 +2094,7 @@
 }
 
 .principles-heading {
+    font-family: "Oswald", sans-serif;
     font-size: 50px;
     font-weight: 800;
     color: var(--dark-green);
@@ -2118,4 +2152,161 @@
     .principles-card p {
         font-size: 0.9rem;
     }
+}
+#view-all-artiles-btn{
+    height: fit-content;
+    width: fit-content;
+    padding: 10px 20px;
+    background-color: var(--primary-green);
+    border-radius: var(--radius-sm);
+    color: white;
+    text-decoration: none;
+    font-size: small;
+    font-weight: 700;
+}
+
+/* Mission Page */
+.mission-page-hero {
+    min-height: 600px;
+    background: url(images/home-forest-image.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-clip: border-box;
+    background-attachment: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 40px 20px;
+    padding-top: 100px;
+    color: var(--white);
+}
+.mission-page-hero::after{
+    content: '';
+    height: 600px;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    position: absolute;
+    top: 0 ;
+    left: 0;
+}
+.mission-page-hero-content{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+    gap: 40px;
+    height: fit-content;
+    width: 95%;
+    max-width: 1200px;
+    position: relative;
+    z-index: 1;
+}
+
+.mission-page-hero-content h1 {
+    font-size: 50px;
+    font-family: "Oswald", sans-serif !important;
+    text-shadow: 1px 1px 2px white;
+}
+
+.mission-page-hero-content p {
+    font-size: small;
+    max-width: 800px;
+}
+
+.mission-page-hero-btn {
+    display: inline-block;
+    padding: 10px 30px;
+    background: var(--white);
+    color: var(--primary-green);
+    border-radius: 50px;
+    font-weight: bold;
+    font-size: small;
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.mission-page-hero-btn:hover {
+    transform: translateY(-4px);
+}
+
+@media(max-width:600px){
+    .mission-page-hero-content h1 {
+    font-size: 35px;
+}
+.mission-page-hero-content p {
+    font-size: x-small;
+}
+.mission-page-hero-content {
+    gap: 30px;
+}
+.mission-page-hero {
+    min-height: 500px;
+}
+.mission-page-hero::after {
+    height: 500px;
+}
+}
+
+
+
+
+/* Article */
+.article-text-section {
+    padding: 60px 20px;
+    padding-top: 150px;
+}
+
+.article-text-container {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.article-text-title {
+    text-align: center;
+    font-size: 50px;
+    color: var(--dark-green);
+    margin-bottom: 30px;
+    font-family: "Oswald", sans-serif;
+}
+
+.article-text-image {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.article-text-image img {
+    height: auto;
+    width: 100%;
+    max-width: 500px;
+    border-radius: 15px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+}
+
+.article-text-content .article-text-heading {
+    color: var(--dark-green);
+    margin-top: 30px;
+    margin-bottom: 15px;
+    font-size: 30px;
+    font-family: "Oswald", sans-serif;
+}
+
+.article-text-content .article-text-para {
+    font-size: small;
+    line-height: 1.8;
+    color: #333;
+    margin-bottom: 20px;
+}
+@media(max-width:600px){
+    .article-text-title {
+    font-size: 35px;
+    }
+    .article-text-content .article-text-heading {
+    font-size: 20px;
+}
+.article-text-content .article-text-para {
+    font-size: x-small;
+}
 }
