@@ -979,102 +979,134 @@ font-family: "Oswald", sans-serif;            font-size: 2.5rem;
 
 
         /* new hero */
-        .new-hero-main{
-    height: 550px;
-    width: 100%;
-    margin-top: 95px;
-    position: relative;
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+      .new-hero-main{
+    width:100%;
+    height:550px;
+    margin-top:95px;
+    position:relative;
+    overflow:hidden;
 }
 
-/* Background Video */
-.new-hero-bg-video{
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    z-index: 1;
+/* ================= SLIDER ================= */
+.new-hero-slider{
+    width:100%;
+    height:100%;
+    position:relative;
 }
 
-/* Overlay */
+/* ================= SLIDE ================= */
+.new-hero-slide{
+    position:absolute;
+    inset:0;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background-size:cover;
+    background-position:center;
+    opacity:0;
+    transition:opacity 1s ease;
+    pointer-events:none;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
+    background-clip: border-box !important;
+}
+
+.new-hero-slide.active{
+    opacity:1;
+    pointer-events:auto;
+    z-index:2;
+}
+
+/* ================= OVERLAY ================= */
 .new-hero-overlay{
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(
-        rgba(0, 0, 0),
-        rgba(0, 0, 0, 0.55),
-        rgba(0, 0, 0)
+    position:absolute;
+    inset:0;
+    background:linear-gradient(
+        rgba(0,0,0,0.9),
+        rgba(0,0,0,0.55),
+        rgba(0,0,0,0.9)
     );
-    z-index: 2;
 }
 
-/* Content */
+/* ================= CONTENT ================= */
 .new-hero-inner-text-container{
-    position: relative;
-    z-index: 3;
-    height: fit-content;
-    width: 95%;
-    max-width: 1200px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
+    position:relative;
+    z-index:3;
+    max-width:1200px;
+    width:95%;
+    text-align:center;
+    color:#fff;
+    display:flex;
+    flex-direction:column;
+    gap:20px;
 }
 
 .new-hero-inner-text-container h1{
-    font-size: 50px;
-    text-align: center;
-    color: white;
-    font-family: "Oswald", sans-serif;
-    text-shadow: 1px 1px 5px rgba(0,0,0,0.7);
+    font-family:"Oswald",sans-serif;
+    font-size:50px;
+    letter-spacing:1px;
 }
+
 .new-hero-inner-text-container h3{
-    text-align: center;
-    color: white;
-    font-family: "Oswald", sans-serif;
-    font-size: 25px;
+    font-family:"Oswald",sans-serif;
+    font-size:25px;
+    font-weight:400;
 }
 
 .new-hero-inner-text-container p{
-    font-size: small;
-    color: white;
-    text-align: center;
-    width: 95%;
-    max-width: 800px;
+    max-width:820px;
+    margin:auto;
+    font-size:14px;
+    line-height:1.8;
 }
 
+/* ================= BUTTON ================= */
 .new-hero-inner-text-container a{
-    box-shadow: none !important;
-    font-size: small;
+    margin-top:10px;
+    align-self:center;
+    padding:12px 34px;
+    background:#1ea84a;
+    color:#fff;
+    text-decoration:none;
+    font-size:14px;
+    font-weight:600;
+    border-radius:4px;
+    transition:0.3s ease;
 }
 
+.new-hero-inner-text-container a:hover{
+    background:#147c35;
+}
+
+/* ================= CONTROLS ================= */
+.new-hero-prev,
+.new-hero-next{
+    position:absolute;
+    top:50%;
+    transform:translateY(-50%);
+    background:rgba(0,0,0,0.55);
+    color:#fff;
+    border:none;
+    font-size:30px;
+    padding:10px 16px;
+    cursor:pointer;
+    z-index:5;
+}
+
+.new-hero-prev{ left:20px; }
+.new-hero-next{ right:20px; }
+
+/* ================= RESPONSIVE ================= */
 @media(max-width:768px){
-    .new-hero-inner-text-container h1 {
-    font-size: 40px;}
-    
-.new-hero-inner-text-container p {
-    font-size: small;}
+    .new-hero-inner-text-container h1{font-size:38px;}
+    .new-hero-inner-text-container h3{font-size:18px;}
+}
 
-}
-@media (max-width: 600px) {
-    .new-hero-inner-text-container h1 {
-        font-size: 35px;
-    }
-    .new-hero-inner-text-container h3 {
-    font-size: 16px;
-}
-.new-hero-inner-text-container {
-    gap: 10px;
-}
-    .new-hero-inner-text-container p,.new-hero-inner-text-container a {
-        font-size: x-small;
-    }
+@media(max-width:600px){
+    .new-hero-inner-text-container h1{font-size:32px;}
+    .new-hero-inner-text-container p,
+    .new-hero-inner-text-container a{font-size:12px;}
 }
 /* Why choose us */
 .why-pro {

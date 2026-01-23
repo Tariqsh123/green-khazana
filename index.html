@@ -56,39 +56,112 @@
 
     <!-- Hero Section -->
 
-    <div class="new-hero-main">
-    <!-- Background Video -->
-    <video class="new-hero-bg-video" autoplay muted loop playsinline>
-        <source src="videos/hero-bg.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-    </video>
+    
+<!-- ================= HERO SECTION ================= -->
+<div class="new-hero-main">
+    <div class="new-hero-slider">
 
-    <!-- Overlay -->
-    <div class="new-hero-overlay"></div>
+        <!-- SLIDE 1 -->
+        <div class="new-hero-slide active" style="background:url(images/home-massive-impact-image.png)">
+            <div class="new-hero-overlay"></div>
+            <div class="new-hero-inner-text-container">
+                <h1>Social Responsibility</h1>
+                <h3>Planting Equity, Not Just Trees</h3>
+                <p>
+                    GREEN KHAZANA empowers citizens to take real responsibility
+                    for Pakistan’s environment through measurable and lasting
+                    climate action. By turning tree plantation into a shared civic
+                    duty, communities actively contribute to cleaner air,
+                    restored ecosystems, biodiversity protection, and long-term
+                    national resilience against climate change.
+                </p>
+                <a href="account.html">Act for Pakistan</a>
+            </div>
+        </div>
 
-    <!-- Content -->
-    <div class="new-hero-inner-text-container">
-        <!-- Heading -->
-        <h1>GREEN KHAZANA – Small Savings. Real Assets. A Greener Pakistan.</h1>
+        <!-- SLIDE 2 -->
+        <div class="new-hero-slide" style="background:url(images/home-our-objective.png)">
+            <div class="new-hero-overlay"></div>
+            <div class="new-hero-inner-text-container">
+                <h1>Kidspreneur Initiative</h1>
+                <h3>Raising Green Leaders From Day One</h3>
+                <p>
+                    Children don’t just plant trees — they own them.
+                    The Kidspreneur Initiative introduces young minds to
+                    savings, ownership, environmental responsibility, and
+                    entrepreneurship through living green assets, nurturing
+                    confidence, leadership, and climate awareness from an
+                    early age.
+                </p>
 
-        <!-- Subheading -->
-        <h3>Pakistan’s First Digitally Monitored, Commercial & People-Owned Forest Platform</h3>
+                <a href="account.html">Enroll a Child</a>
+            </div>
+        </div>
 
-        <!-- Content Paragraphs -->
-        <p>
-            GREEN KHAZANA is not a plantation drive.
-        </p>
-        <p>
-            It is Pakistan’s green savings system—where every citizen can own trees, build wealth, and protect the future.
-        </p>
-        <p>
-            “Climate action should not be a sacrifice. It should be an opportunity—to earn, to grow, and to leave behind something meaningful.”
-        </p>
+        <!-- SLIDE 3 -->
+        <div class="new-hero-slide" style="background:url(images/our-vision-image.png)">
+            <div class="new-hero-overlay"></div>
+            <div class="new-hero-inner-text-container">
+                <h1>Commercial Ownership</h1>
+                <h3>Trees That Grow Income</h3>
+                <p>
+                    Transform plantations into digitally monitored assets
+                    designed for sustainable income. Track tree growth,
+                    evaluate performance, generate long-term returns,
+                    and participate in future carbon credit and green
+                    investment markets with transparency and trust.
+                </p>
 
-        <!-- CTA Button -->
-        <a href="account.html" class="btn btn-primary">Plant Today. Own Tomorrow. Protect Forever.</a>
+                <a href="account.html">Start Earning Green</a>
+            </div>
+        </div>
+
+        <!-- CONTROLS -->
+        <button class="new-hero-prev">❮</button>
+        <button class="new-hero-next">❯</button>
+
     </div>
 </div>
+
+<!-- ================= JS ================= -->
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    const newSlides = document.querySelectorAll(".new-hero-slide");
+    const newNextBtn = document.querySelector(".new-hero-next");
+    const newPrevBtn = document.querySelector(".new-hero-prev");
+
+    let newCurrentSlide = 0;
+
+    function newShowSlide(newIndex){
+        newSlides.forEach(function(newSlide, newI){
+            if(newI === newIndex){
+                newSlide.classList.add("active");
+            } else {
+                newSlide.classList.remove("active");
+            }
+        });
+    }
+
+    newNextBtn.addEventListener("click", function(){
+        newCurrentSlide = (newCurrentSlide + 1) % newSlides.length;
+        newShowSlide(newCurrentSlide);
+    });
+
+    newPrevBtn.addEventListener("click", function(){
+        newCurrentSlide = (newCurrentSlide - 1 + newSlides.length) % newSlides.length;
+        newShowSlide(newCurrentSlide);
+    });
+
+    setInterval(function(){
+        newCurrentSlide = (newCurrentSlide + 1) % newSlides.length;
+        newShowSlide(newCurrentSlide);
+    }, 5000);
+
+    newShowSlide(newCurrentSlide);
+
+});
+</script>
 
 
 <!-- /* national section after new hero */ -->
