@@ -2317,6 +2317,12 @@ font-family: "Oswald", sans-serif;            font-size: 2.5rem;
     color: #333;
     margin-bottom: 20px;
 }
+.article-text-para li a {
+    color: #333;
+}
+.article-text-para li a:hover{
+    color: var(--primary-green);
+}
 @media(max-width:600px){
     .article-text-title {
     font-size: 35px;
@@ -2467,7 +2473,6 @@ font-family: "Oswald", sans-serif;            font-size: 2.5rem;
 
 /* Tab Content */
 .donation-page-tab-content {
-  display: none;
   animation: fadeIn 0.5s ease-in;
 }
 .donation-page-tab-content.active {
@@ -2498,7 +2503,7 @@ font-family: "Oswald", sans-serif;            font-size: 2.5rem;
 .donation-page-package-grid {
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     flex-wrap: wrap;
   gap: 25px;
 }
@@ -2524,6 +2529,7 @@ font-family: "Oswald", sans-serif;            font-size: 2.5rem;
       font-family: "Oswald", sans-serif;
   margin-bottom: 12px;
   display: flex;
+  justify-content: center;
   align-items: center;
   gap: 8px;
 }
@@ -2586,4 +2592,89 @@ font-family: "Oswald", sans-serif;            font-size: 2.5rem;
   .donation-page-package-card p,
   .donation-page-impact p { font-size: x-small; }
   .donation-page-impact h4 { font-size: 20px; }
+}
+/* Plans Page */
+.plans-page-main-container{
+    height: fit-content;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    flex-direction: column;
+    margin: 0 auto;
+    max-width: 1200px;
+    padding: 60px 20px;
+    padding-top: 120px;
+}
+.plans-page-main-container h1{
+    font-size: 60px;
+    text-align: center;
+    color: var(--dark-green);
+}
+.plans-page-main-container p{
+    font-size: medium;
+    text-align: center;
+    color: var(--dark-gray);
+}
+.plans-page-card-container{
+    height: fit-content;
+    width: 100%;
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+.plans-card{
+    height: fit-content;
+    width: 330px;
+    padding: 10px;
+    box-shadow: 1px 1px 10px gray;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+}
+.plans-card h2{
+    font-size: 24px;
+    text-align: center;
+    color: var(--dark-green);
+    margin-top: 20px;
+}
+
+.plans-card p{
+    text-align: center;
+    padding: 0 15px;
+    font-size: medium;
+    color: var(--dark-gray);
+}
+
+.plans-card-btn{
+    display: block;
+    width: fit-content;
+    margin: 0 auto 20px auto;
+    padding: 7px 20px;
+    background-color: var(--primary-green);
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: 0.3s;
+    font-size: medium;
+}
+
+.plans-card-btn:hover{
+    background-color: var(--dark-green);
+}
+
+@media(max-width:600px){
+ .plans-page-main-container h1{
+    font-size: 35px;
+}   
+.plans-page-main-container p{
+    font-size: small;
+}
 }
