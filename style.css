@@ -2310,8 +2310,10 @@ font-family: "Oswald", sans-serif;            font-size: 2.5rem;
     font-size: 25px;
     font-family: "Oswald", sans-serif;
 }
-
-.article-text-content .article-text-para {
+.article-text-content ul{
+    margin-top: 30px;
+}
+.article-text-content .article-text-para ,.article-text-content ul li {
     font-size: small;
     line-height: 1.8;
     color: #333;
