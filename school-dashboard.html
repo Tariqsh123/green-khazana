@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Green Khazana · Monthly Installments Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
+        }
+
+        body {
+            background: #f0f7f0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .dashboard {
+            max-width: 1400px;
+            width: 100%;
+            background: white;
+            border-radius: 32px;
+            box-shadow: 0 20px 40px rgba(0, 40, 0, 0.12);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .header {
+            background: #1b5e20;
+            padding: 24px 32px;
+            color: white;
+        }
+        .header h1 {
+            font-weight: 600;
+            font-size: 2rem;
+            letter-spacing: -0.5px;
+        }
+        .header h1 span {
+            font-weight: 300;
+            color: #c8e6c9;
+        }
+        .header p {
+            color: #e8f5e9;
+            margin-top: 6px;
+        }
+
+        .tab-bar {
+            display: flex;
+            flex-wrap: wrap;
+            background: #e8f5e9;
+            padding: 0 20px;
+            gap: 8px;
+            border-bottom: 2px solid #a5d6a7;
+        }
+        .tab-btn {
+            padding: 16px 24px;
+            background: transparent;
+            border: none;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #1b5e20;
+            cursor: pointer;
+            border-radius: 30px 30px 0 0;
+            transition: 0.2s;
+            margin-bottom: -2px;
+            border-bottom: 3px solid transparent;
+        }
+        .tab-btn i {
+            margin-right: 8px;
+        }
+        .tab-btn:hover {
+            background: #c8e6c9;
+            color: #0a3d0a;
+        }
+        .tab-btn.active {
+            background: white;
+            color: #0f4d0f;
+            border-bottom: 3px solid #1b5e20;
+            font-weight: 700;
+        }
+
+        .panel {
+            display: none;
+            padding: 32px;
+            background: white;
+        }
+        .panel.active {
+            display: block;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 24px;
+            margin-bottom: 40px;
+        }
+        .stat-card {
+            background: #f1f8e9;
+            border-radius: 28px;
+            padding: 24px;
+            border: 1px solid #c5e1a5;
+        }
+        .stat-card h3 {
+            color: #33691e;
+            font-size: 1rem;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #1b5e20;
+            line-height: 1.1;
+        }
+        .stat-desc {
+            color: #558b2f;
+            margin-top: 8px;
+        }
+
+        .form-card, .card {
+            background: #f9fff9;
+            border-radius: 24px;
+            padding: 28px;
+            border: 1px solid #c8e6c9;
+            box-shadow: 0 8px 18px #e0f0e0;
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            position: relative;
+        }
+        .form-group label {
+            font-weight: 600;
+            color: #1f4f1f;
+            display: block;
+            margin-bottom: 8px;
+        }
+        .input-icon {
+            position: relative;
+        }
+        .input-icon i {
+            position: absolute;
+            left: 18px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #2e7d32;
+            font-size: 1.1rem;
+        }
+        .form-control {
+            width: 100%;
+            padding: 14px 18px 14px 48px;
+            font-size: 1rem;
+            border: 2px solid #c8e6c9;
+            border-radius: 40px;
+            background: white;
+            transition: 0.2s;
+        }
+        .form-control:focus {
+            border-color: #2e7d32;
+            outline: none;
+            box-shadow: 0 0 0 4px #a5d6a7;
+        }
+        .btn {
+            background: #2e7d32;
+            color: white;
+            border: none;
+            padding: 12px 28px;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: 0.2s;
+            border: 2px solid transparent;
+        }
+        .btn i {
+            margin-right: 8px;
+        }
+        .btn:hover {
+            background: #1b5e20;
+            transform: scale(0.98);
+        }
+        .btn-outline {
+            background: white;
+            color: #1b5e20;
+            border: 2px solid #2e7d32;
+        }
+        .btn-outline:hover {
+            background: #e8f5e9;
+        }
+        .btn-small {
+            padding: 8px 16px;
+            font-size: 0.9rem;
+        }
+
+        .plans-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 24px;
+            margin-top: 20px;
+        }
+        .plan-card {
+            background: white;
+            border-radius: 28px;
+            padding: 24px;
+            border: 1px solid #a5d6a7;
+            transition: 0.15s;
+            display: flex;
+            flex-direction: column;
+        }
+        .plan-card:hover {
+            border-color: #2e7d32;
+            box-shadow: 0 12px 24px #b9e0b9;
+        }
+        .plan-category {
+            background: #e0f2e0;
+            padding: 4px 12px;
+            border-radius: 40px;
+            display: inline-block;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #1b5e20;
+            margin-bottom: 12px;
+        }
+        .plan-title {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #0f4d0f;
+        }
+        .plan-trees {
+            margin: 12px 0 8px;
+            font-weight: 600;
+            color: #2e7d32;
+        }
+        .plan-detail {
+            margin: 4px 0;
+            color: #2e5e2e;
+        }
+        .subscribe-section {
+            margin-top: auto;
+            padding-top: 20px;
+        }
+
+        .table-responsive {
+            overflow-x: auto;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px #d0e8d0;
+        }
+        th {
+            background: #1b5e20;
+            color: white;
+            padding: 16px 12px;
+            font-weight: 600;
+        }
+        th i {
+            margin-right: 6px;
+        }
+        td {
+            padding: 14px 12px;
+            border-bottom: 1px solid #dcedc8;
+        }
+        tr:last-child td {
+            border-bottom: none;
+        }
+        .badge {
+            background: #c8e6c9;
+            color: #1b5e20;
+            padding: 4px 14px;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        .badge-paid {
+            background: #c8e6c9;
+            color: #1b5e20;
+        }
+        .badge-pending {
+            background: #ffecb3;
+            color: #b76e1b;
+        }
+        .installment-item {
+            background: #f5fcf5;
+            border-radius: 20px;
+            padding: 16px;
+            margin-bottom: 12px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            border-left: 8px solid #2e7d32;
+        }
+
+        @media (max-width: 700px) {
+            .header { padding: 20px; }
+            .panel { padding: 20px; }
+            .tab-btn { padding: 12px 16px; }
+            .stat-number { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+<div class="dashboard">
+    <div class="header">
+        <h1><i class="fas fa-seedling" style="margin-right: 12px;"></i>Green Khazana <span>· Monthly Installments</span></h1>
+        <p>Empower students, track monthly payments, manage green assets.</p>
+    </div>
+
+    <div class="tab-bar">
+        <button class="tab-btn active" data-tab="overview"><i class="fas fa-chart-pie"></i> Overview</button>
+        <button class="tab-btn" data-tab="addStudents"><i class="fas fa-user-plus"></i> Add Students</button>
+        <button class="tab-btn" data-tab="plans"><i class="fas fa-tree"></i> Plans</button>
+        <button class="tab-btn" data-tab="subscribed"><i class="fas fa-check-circle"></i> Subscribed</button>
+        <button class="tab-btn" data-tab="installments"><i class="fas fa-credit-card"></i> Monthly Installments</button>
+        <button class="tab-btn" data-tab="admin"><i class="fas fa-school"></i> Admin Pay</button>
+    </div>
+
+    <!-- Overview Panel -->
+    <div id="overview" class="panel active">
+        <div class="stats-grid" id="statsContainer"></div>
+        <div class="card">
+            <h2 style="color:#1b5e20;"><i class="fas fa-bolt"></i> Quick Actions</h2>
+            <p style="margin: 16px 0;">Use the tabs above to manage students, plans, and monthly payments.</p>
+            <div style="display: flex; gap: 16px; flex-wrap: wrap;">
+                <button class="btn" onclick="document.querySelector('[data-tab=addStudents]').click()"><i class="fas fa-user-plus"></i> Add Student</button>
+                <button class="btn btn-outline" onclick="document.querySelector('[data-tab=plans]').click()"><i class="fas fa-tree"></i> View Plans</button>
+                <button class="btn btn-outline" onclick="document.querySelector('[data-tab=installments]').click()"><i class="fas fa-credit-card"></i> Installments</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Students Panel -->
+    <div id="addStudents" class="panel">
+        <div class="form-card">
+            <h2 style="color:#1b5e20;"><i class="fas fa-graduation-cap"></i> Register New Student</h2>
+            <form id="studentForm">
+                <div class="form-group">
+                    <label><i class="fas fa-user"></i> Full Name</label>
+                    <div class="input-icon">
+                        <i class="fas fa-user"></i>
+                        <input type="text" id="studentName" class="form-control" placeholder="e.g. Fatima Ahmed" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label><i class="fas fa-envelope"></i> Email</label>
+                    <div class="input-icon">
+                        <i class="fas fa-envelope"></i>
+                        <input type="email" id="studentEmail" class="form-control" placeholder="fatima@school.edu" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label><i class="fas fa-lock"></i> Password</label>
+                    <div class="input-icon">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="studentPassword" class="form-control" placeholder="••••••••" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label><i class="fas fa-school"></i> Class / Grade</label>
+                    <div class="input-icon">
+                        <i class="fas fa-school"></i>
+                        <input type="text" id="studentClass" class="form-control" placeholder="e.g. 5-A" required>
+                    </div>
+                </div>
+                <button type="submit" class="btn"><i class="fas fa-save"></i> Add Student</button>
+            </form>
+        </div>
+        <div>
+            <h3 style="color:#1f4f1f; margin-bottom: 16px;"><i class="fas fa-list"></i> Student List</h3>
+            <div id="studentListContainer" class="table-responsive"></div>
+        </div>
+    </div>
+
+    <!-- Plans Panel -->
+    <div id="plans" class="panel">
+        <h2 style="color:#1b5e20;"><i class="fas fa-leaf"></i> All Green Khazana Plans (Monthly Installments)</h2>
+        <p style="margin-bottom: 20px;">Select a plan and assign to a student. First pay plantation cost, then monthly installments.</p>
+        <div id="plansContainer" class="plans-grid"></div>
+    </div>
+
+    <!-- Subscribed Plans Panel -->
+    <div id="subscribed" class="panel">
+        <h2 style="color:#1b5e20;"><i class="fas fa-check-double"></i> Active Subscriptions</h2>
+        <div id="subscriptionsContainer" class="table-responsive"></div>
+    </div>
+
+    <!-- Monthly Installments Panel -->
+    <div id="installments" class="panel">
+        <h2 style="color:#1b5e20;"><i class="fas fa-coins"></i> Monthly Installment Tracker</h2>
+        <p class="stat-desc" style="margin-bottom: 24px;">Each subscription has a fixed monthly amount. Click "Pay Next Month" to record payment.</p>
+        <div id="installmentsList"></div>
+    </div>
+
+    <!-- Admin Pay Details Panel -->
+    <div id="admin" class="panel">
+        <h2 style="color:#1b5e20;"><i class="fas fa-chart-line"></i> School & Admin Financial Summary</h2>
+        <div class="stats-grid" id="adminStats" style="grid-template-columns: repeat(2,1fr);"></div>
+        <div class="card" style="margin-top: 20px;">
+            <h3 style="color:#1b5e20;"><i class="fas fa-file-invoice"></i> Collection Details</h3>
+            <table id="adminTable">
+                <thead><tr><th><i class="fas fa-align-left"></i> Description</th><th><i class="fas fa-rupee-sign"></i> Amount (PKR)</th></tr></thead>
+                <tbody id="adminTableBody"></tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script>
+    (function() {
+        // ---------- ALL PLANS with monthly recurring ----------
+        const PLANS = [
+            // Donation (monthly maintenance already)
+            { id: 'don10', category: 'Donation', name: 'Donation 10 Trees', trees: 10, plantationCost: 2000, monthlyRecurring: 500, projectedReturn: null },
+            { id: 'don100', category: 'Donation', name: 'Donation 100 Trees', trees: 100, plantationCost: 20000, monthlyRecurring: 5000, projectedReturn: null },
+            { id: 'don400', category: 'Donation', name: 'Donation 400 Trees', trees: 400, plantationCost: 40000, monthlyRecurring: 10000, projectedReturn: null },
+            // Commercial - Social Responsibility (monthly rental)
+            { id: 'comSR100', category: 'Commercial (SR)', name: 'SR 100 Trees', trees: 100, plantationCost: 20000, monthlyRecurring: 5000, projectedReturn: null },
+            { id: 'comSR200', category: 'Commercial (SR)', name: 'SR 200 Trees', trees: 200, plantationCost: 40000, monthlyRecurring: 10000, projectedReturn: null },
+            { id: 'comSR500', category: 'Commercial (SR)', name: 'SR 500 Trees', trees: 500, plantationCost: 100000, monthlyRecurring: 25000, projectedReturn: null },
+            { id: 'comSR1000', category: 'Commercial (SR)', name: 'SR 1000 Trees', trees: 1000, plantationCost: 200000, monthlyRecurring: 50000, projectedReturn: null },
+            // Commercial - Women & Kids (monthly rental)
+            { id: 'comWKE25', category: 'Women & Kids', name: 'WKE 25 Trees', trees: 25, plantationCost: 5000, monthlyRecurring: 1250, projectedReturn: null },
+            { id: 'comWKE50', category: 'Women & Kids', name: 'WKE 50 Trees', trees: 50, plantationCost: 10000, monthlyRecurring: 2500, projectedReturn: null },
+            { id: 'comWKE100', category: 'Women & Kids', name: 'WKE 100 Trees', trees: 100, plantationCost: 20000, monthlyRecurring: 5000, projectedReturn: null },
+            // Commercial - Adopt a Class/School (monthly rental)
+            { id: 'comClass200', category: 'Adopt a Class', name: 'Adopt a Class 200', trees: 200, plantationCost: 40000, monthlyRecurring: 6000, projectedReturn: null },
+            { id: 'comSchool500', category: 'Adopt a School', name: 'Adopt a School 500', trees: 500, plantationCost: 100000, monthlyRecurring: 15000, projectedReturn: null },
+            // Kidspenuership (annual rental converted to monthly, rounded to nearest rupee)
+            { id: 'kidA', category: 'Kidspenuership', name: 'Option A 10 Trees', trees: 10, plantationCost: 2000, monthlyRecurring: Math.round(3000/12), projectedReturn: '50% to 200%+' },
+            { id: 'kidB', category: 'Kidspenuership', name: 'Option B 100 Trees', trees: 100, plantationCost: 20000, monthlyRecurring: Math.round(30000/12), projectedReturn: '50% to 200%+' },
+            { id: 'kidC', category: 'Kidspenuership', name: 'Option C 200 Trees', trees: 200, plantationCost: 40000, monthlyRecurring: Math.round(60000/12), projectedReturn: '50% to 200%+' },
+            { id: 'kidD', category: 'Kidspenuership', name: 'Option D 500 Trees', trees: 500, plantationCost: 100000, monthlyRecurring: Math.round(150000/12), projectedReturn: '50% to 200%+' },
+            { id: 'kidE', category: 'Kidspenuership', name: 'Option E 1000 Trees', trees: 1000, plantationCost: 200000, monthlyRecurring: Math.round(300000/12), projectedReturn: '50% to 200%+' }
+        ];
+
+        // Local storage keys
+        const STORAGE_STUDENTS = 'gk_students_monthly';
+        const STORAGE_SUBS = 'gk_subs_monthly';
+
+        let students = JSON.parse(localStorage.getItem(STORAGE_STUDENTS)) || [];
+        let subscriptions = JSON.parse(localStorage.getItem(STORAGE_SUBS)) || [];
+
+        // Helper: save both
+        function saveData() {
+            localStorage.setItem(STORAGE_STUDENTS, JSON.stringify(students));
+            localStorage.setItem(STORAGE_SUBS, JSON.stringify(subscriptions));
+        }
+
+        // Helper: generate ID
+        function genId() { return Date.now() + '-' + Math.random().toString(36).substr(2, 9); }
+
+        // Helper: get current month key (YYYY-MM)
+        function getCurrentMonthKey() {
+            const d = new Date();
+            return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0');
+        }
+
+        // Helper: increment month key
+        function incrementMonthKey(monthKey) {
+            const [y, m] = monthKey.split('-').map(Number);
+            if (m === 12) return (y+1) + '-01';
+            else return y + '-' + String(m+1).padStart(2, '0');
+        }
+
+        // Helper: get plan by id
+        function getPlan(planId) {
+            return PLANS.find(p => p.id === planId);
+        }
+
+        // ---------- RENDER FUNCTIONS ----------
+        function renderOverview() {
+            const totalStudents = students.length;
+            const totalSubs = subscriptions.length;
+            const totalTrees = subscriptions.reduce((sum, sub) => {
+                const p = getPlan(sub.planId);
+                return sum + (p ? p.trees : 0);
+            }, 0);
+            const totalPlantation = subscriptions.reduce((sum, sub) => {
+                const p = getPlan(sub.planId);
+                return sum + (p ? p.plantationCost : 0);
+            }, 0);
+            const totalMonthlyDue = subscriptions.reduce((sum, sub) => sum + sub.monthlyRecurring, 0);
+            document.getElementById('statsContainer').innerHTML = `
+                <div class="stat-card"><h3><i class="fas fa-users"></i> Students</h3><div class="stat-number">${totalStudents}</div></div>
+                <div class="stat-card"><h3><i class="fas fa-clipboard-list"></i> Subscriptions</h3><div class="stat-number">${totalSubs}</div></div>
+                <div class="stat-card"><h3><i class="fas fa-tree"></i> Trees</h3><div class="stat-number">${totalTrees}</div></div>
+                <div class="stat-card"><h3><i class="fas fa-coins"></i> Monthly Due</h3><div class="stat-number">PKR ${totalMonthlyDue.toLocaleString()}</div></div>
+            `;
+        }
+
+        function renderStudentList() {
+            if (!students.length) {
+                document.getElementById('studentListContainer').innerHTML = '<p class="card"><i class="fas fa-info-circle"></i> No students yet.</p>';
+                return;
+            }
+            let html = '<table><thead><tr><th><i class="fas fa-user"></i> Name</th><th><i class="fas fa-envelope"></i> Email</th><th><i class="fas fa-school"></i> Class</th><th><i class="fas fa-id-card"></i> ID</th></tr></thead><tbody>';
+            students.forEach(s => {
+                html += `<tr><td>${s.name}</td><td>${s.email}</td><td>${s.class}</td><td><span class="badge">${s.id.substr(0,8)}</span></td></tr>`;
+            });
+            html += '</tbody></table>';
+            document.getElementById('studentListContainer').innerHTML = html;
+        }
+
+        function renderPlans() {
+            if (!students.length) {
+                document.getElementById('plansContainer').innerHTML = '<div class="card"><i class="fas fa-exclamation-triangle"></i> ⚠️ Please <button class="btn-outline btn-small" onclick="document.querySelector(\'[data-tab=addStudents]\').click()"><i class="fas fa-user-plus"></i> add a student</button> first.</div>';
+                return;
+            }
+            let plansHtml = '';
+            PLANS.forEach(plan => {
+                plansHtml += `
+                    <div class="plan-card">
+                        <span class="plan-category"><i class="fas fa-tag"></i> ${plan.category}</span>
+                        <div class="plan-title">${plan.name}</div>
+                        <div class="plan-trees"><i class="fas fa-tree"></i> ${plan.trees} trees</div>
+                        <div class="plan-detail"><i class="fas fa-seedling"></i> <strong>Plantation (one-time):</strong> PKR ${plan.plantationCost.toLocaleString()}</div>
+                        <div class="plan-detail"><i class="fas fa-calendar-alt"></i> <strong>Monthly installment:</strong> PKR ${plan.monthlyRecurring.toLocaleString()}</div>
+                        ${plan.projectedReturn ? `<div class="plan-detail"><i class="fas fa-chart-line"></i> <strong>Projected:</strong> ${plan.projectedReturn}</div>` : ''}
+                        <div class="subscribe-section">
+                            <label><i class="fas fa-user-graduate"></i> Assign to:</label>
+                            <select id="student-${plan.id}" class="form-control" style="margin:8px 0;">
+                                ${students.map(s => `<option value="${s.id}">${s.name} (${s.class})</option>`).join('')}
+                            </select>
+                            <button class="btn" onclick="subscribePlan('${plan.id}')"><i class="fas fa-check"></i> Subscribe</button>
+                        </div>
+                    </div>
+                `;
+            });
+            document.getElementById('plansContainer').innerHTML = plansHtml;
+        }
+
+        window.subscribePlan = function(planId) {
+            const selectEl = document.getElementById(`student-${planId}`);
+            if (!selectEl) return;
+            const studentId = selectEl.value;
+            const plan = getPlan(planId);
+            const student = students.find(s => s.id === studentId);
+            if (!plan || !student) return;
+
+            const currentMonth = getCurrentMonthKey();
+            const newSub = {
+                id: genId(),
+                studentId: studentId,
+                planId: planId,
+                startMonth: currentMonth,
+                studentName: student.name,
+                planName: plan.name,
+                trees: plan.trees,
+                monthlyRecurring: plan.monthlyRecurring,
+                paidUpToMonth: null   // no months paid yet
+            };
+            subscriptions.push(newSub);
+            saveData();
+            renderSubscriptions();
+            renderInstallments();
+            renderAdmin();
+            renderOverview();
+            document.querySelector('[data-tab=subscribed]').click();
+        };
+
+        function renderSubscriptions() {
+            if (!subscriptions.length) {
+                document.getElementById('subscriptionsContainer').innerHTML = '<div class="card"><i class="fas fa-info-circle"></i> No subscriptions yet.</div>';
+                return;
+            }
+            let html = '<table><thead><tr><th><i class="fas fa-user"></i> Student</th><th><i class="fas fa-tree"></i> Plan</th><th><i class="fas fa-tree"></i> Trees</th><th><i class="fas fa-calendar"></i> Start</th><th><i class="fas fa-credit-card"></i> Monthly</th><th><i class="fas fa-check-circle"></i> Paid up to</th><th><i class="fas fa-cog"></i> Action</th></tr></thead><tbody>';
+            subscriptions.forEach(sub => {
+                const paidUpTo = sub.paidUpToMonth ? sub.paidUpToMonth : 'None';
+                html += `
+                    <tr>
+                        <td>${sub.studentName}</td>
+                        <td>${sub.planName}</td>
+                        <td>${sub.trees}</td>
+                        <td>${sub.startMonth}</td>
+                        <td>PKR ${sub.monthlyRecurring.toLocaleString()}</td>
+                        <td>${paidUpTo}</td>
+                        <td><button class="btn-outline btn-small" onclick="removeSubscription('${sub.id}')"><i class="fas fa-trash-alt"></i> Remove</button></td>
+                    </tr>
+                `;
+            });
+            html += '</tbody></table>';
+            document.getElementById('subscriptionsContainer').innerHTML = html;
+        }
+
+        function renderInstallments() {
+            if (!subscriptions.length) {
+                document.getElementById('installmentsList').innerHTML = '<div class="card"><i class="fas fa-info-circle"></i> No subscriptions to track.</div>';
+                return;
+            }
+            let html = '';
+            subscriptions.forEach(sub => {
+                const plan = getPlan(sub.planId);
+                if (!plan) return;
+
+                // Determine next due month
+                let nextDueMonth;
+                if (!sub.paidUpToMonth) {
+                    nextDueMonth = sub.startMonth;
+                } else {
+                    nextDueMonth = incrementMonthKey(sub.paidUpToMonth);
+                }
+
+                const currentMonth = getCurrentMonthKey();
+                const isOverdue = nextDueMonth < currentMonth;
+                const isCurrent = nextDueMonth === currentMonth;
+
+                let statusText = '';
+                if (!sub.paidUpToMonth) {
+                    statusText = 'First installment due';
+                } else {
+                    statusText = `Next: ${nextDueMonth}`;
+                }
+
+                // Calculate months paid
+                let monthsPaid = 0;
+                if (sub.paidUpToMonth) {
+                    // approximate: count months from start to paidUpToMonth inclusive
+                    const [startY, startM] = sub.startMonth.split('-').map(Number);
+                    const [paidY, paidM] = sub.paidUpToMonth.split('-').map(Number);
+                    monthsPaid = (paidY - startY) * 12 + (paidM - startM) + 1;
+                }
+                const totalPaidAmount = monthsPaid * sub.monthlyRecurring;
+
+                html += `
+                    <div class="installment-item">
+                        <div>
+                            <i class="fas fa-user-graduate"></i> <strong>${sub.studentName}</strong> (${sub.planName})<br>
+                            <span class="stat-desc"><i class="fas fa-calendar-alt"></i> Monthly: PKR ${sub.monthlyRecurring.toLocaleString()} | Start: ${sub.startMonth}</span><br>
+                            <span class="stat-desc"><i class="fas fa-check-circle"></i> Paid months: ${monthsPaid} (PKR ${totalPaidAmount.toLocaleString()})</span>
+                        </div>
+                        <div style="display: flex; gap: 16px; align-items: center; flex-wrap: wrap;">
+                            <span class="badge ${isOverdue ? 'badge-pending' : 'badge-paid'}">
+                                <i class="fas ${isOverdue ? 'fa-exclamation-triangle' : 'fa-calendar-check'}"></i> ${statusText}
+                            </span>
+                            <button class="btn-small ${(!sub.paidUpToMonth || nextDueMonth <= currentMonth) ? 'btn' : 'btn-outline'}" 
+                                    onclick="payNextMonth('${sub.id}')"
+                                    ${(sub.paidUpToMonth && nextDueMonth > currentMonth) ? 'disabled' : ''}>
+                                <i class="fas fa-credit-card"></i> Pay Next Month (${nextDueMonth})
+                            </button>
+                        </div>
+                    </div>
+                `;
+            });
+            document.getElementById('installmentsList').innerHTML = html;
+        }
+
+        window.payNextMonth = function(subId) {
+            const sub = subscriptions.find(s => s.id === subId);
+            if (!sub) return;
+
+            const currentMonth = getCurrentMonthKey();
+            let nextDueMonth;
+            if (!sub.paidUpToMonth) {
+                nextDueMonth = sub.startMonth;
+            } else {
+                nextDueMonth = incrementMonthKey(sub.paidUpToMonth);
+            }
+
+            // Allow only if nextDueMonth <= currentMonth (i.e., not paying future months)
+            if (nextDueMonth > currentMonth) {
+                alert('Cannot pay future months yet.');
+                return;
+            }
+
+            // Update paidUpToMonth to nextDueMonth
+            sub.paidUpToMonth = nextDueMonth;
+            saveData();
+            renderInstallments();
+            renderSubscriptions();
+            renderAdmin();
+            renderOverview();
+        };
+
+        window.removeSubscription = function(subId) {
+            subscriptions = subscriptions.filter(s => s.id !== subId);
+            saveData();
+            renderSubscriptions();
+            renderInstallments();
+            renderAdmin();
+            renderOverview();
+        };
+
+        function renderAdmin() {
+            const totalStudents = students.length;
+            const totalSubs = subscriptions.length;
+            const totalTrees = subscriptions.reduce((sum, sub) => {
+                const p = getPlan(sub.planId);
+                return sum + (p ? p.trees : 0);
+            }, 0);
+
+            // Total plantation collected
+            const totalPlantation = subscriptions.reduce((sum, sub) => {
+                const p = getPlan(sub.planId);
+                return sum + (p ? p.plantationCost : 0);
+            }, 0);
+
+            // Total monthly payments collected
+            let totalMonthlyCollected = 0;
+            subscriptions.forEach(sub => {
+                if (sub.paidUpToMonth) {
+                    const [startY, startM] = sub.startMonth.split('-').map(Number);
+                    const [paidY, paidM] = sub.paidUpToMonth.split('-').map(Number);
+                    const monthsPaid = (paidY - startY) * 12 + (paidM - startM) + 1;
+                    totalMonthlyCollected += monthsPaid * sub.monthlyRecurring;
+                }
+            });
+
+            const totalCollected = totalPlantation + totalMonthlyCollected;
+
+            // Expected total over 6 years (72 months)
+            const totalExpected = subscriptions.reduce((sum, sub) => {
+                const p = getPlan(sub.planId);
+                if (!p) return sum;
+                return sum + p.plantationCost + (sub.monthlyRecurring * 72);
+            }, 0);
+
+            document.getElementById('adminStats').innerHTML = `
+                <div class="stat-card"><h3><i class="fas fa-chart-pie"></i> Total Collected</h3><div class="stat-number">PKR ${totalCollected.toLocaleString()}</div></div>
+                <div class="stat-card"><h3><i class="fas fa-chart-line"></i> Expected 6yr</h3><div class="stat-number">PKR ${totalExpected.toLocaleString()}</div></div>
+            `;
+
+            const pending = totalExpected - totalCollected;
+            document.getElementById('adminTableBody').innerHTML = `
+                <tr><td><i class="fas fa-seedling"></i> Plantation fees collected</td><td>PKR ${totalPlantation.toLocaleString()}</td></tr>
+                <tr><td><i class="fas fa-credit-card"></i> Monthly installments collected</td><td>PKR ${totalMonthlyCollected.toLocaleString()}</td></tr>
+                <tr><td><i class="fas fa-check-circle"></i> Total collected</td><td>PKR ${totalCollected.toLocaleString()}</td></tr>
+                <tr><td><i class="fas fa-clock"></i> Pending (estimated)</td><td>PKR ${pending.toLocaleString()}</td></tr>
+                <tr><td><i class="fas fa-users"></i> Total students</td><td>${totalStudents}</td></tr>
+                <tr><td><i class="fas fa-clipboard-list"></i> Active subscriptions</td><td>${totalSubs}</td></tr>
+                <tr><td><i class="fas fa-tree"></i> Total trees</td><td>${totalTrees}</td></tr>
+            `;
+        }
+
+        // Event listener for add student
+        document.getElementById('studentForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('studentName').value.trim();
+            const email = document.getElementById('studentEmail').value.trim();
+            const password = document.getElementById('studentPassword').value.trim();
+            const className = document.getElementById('studentClass').value.trim();
+            if (!name || !email || !password || !className) return;
+
+            const newStudent = {
+                id: genId(),
+                name,
+                email,
+                password,
+                class: className
+            };
+            students.push(newStudent);
+            saveData();
+            renderStudentList();
+            renderPlans();
+            renderOverview();
+            document.getElementById('studentName').value = '';
+            document.getElementById('studentEmail').value = '';
+            document.getElementById('studentPassword').value = '';
+            document.getElementById('studentClass').value = '';
+        });
+
+        // Tab switching
+        const tabs = document.querySelectorAll('.tab-btn');
+        const panels = document.querySelectorAll('.panel');
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                const targetId = tab.getAttribute('data-tab');
+                tabs.forEach(t => t.classList.remove('active'));
+                panels.forEach(p => p.classList.remove('active'));
+                tab.classList.add('active');
+                document.getElementById(targetId).classList.add('active');
+
+                // refresh content
+                if (targetId === 'overview') renderOverview();
+                if (targetId === 'addStudents') renderStudentList();
+                if (targetId === 'plans') renderPlans();
+                if (targetId === 'subscribed') renderSubscriptions();
+                if (targetId === 'installments') renderInstallments();
+                if (targetId === 'admin') renderAdmin();
+            });
+        });
+
+        // initial render
+        renderOverview();
+        renderStudentList();
+        renderPlans();
+        renderSubscriptions();
+        renderInstallments();
+        renderAdmin();
+    })();
+</script>
+</body>
+</html>
